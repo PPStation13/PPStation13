@@ -85,8 +85,8 @@
 			return 1
 		if(user.next_move > world.time)
 			user.changeNext_move(50)
-			H.visible_message("<span class='danger'>[user] tries to tear off [H]'s tooth with [src]!</span>",
-								"<span class='userdanger'>[user] tries to tear off your tooth with [src]!</span>")
+			H.visible_message("<span class='danger'>[user] tries to pull [H]'s tooth out with [src]!</span>",
+								"<span class='userdanger'>[user] tries to pull your tooth out with [src]!</span>")
 			if(do_after(user, 50, target = H))
 				if(!O || !O.get_teeth()) return 1
 				var/obj/item/stack/teeth/E = pick(O.teeth_list)
@@ -95,17 +95,17 @@
 				T.copy_evidences(E)
 				E.use(1)
 				E.zero_amount() //Try to delete the teeth
-				log_combat(user, H, "torn out the tooth from", src)
-				H.visible_message("<span class='danger'>[user] tears off [H]'s tooth with [src]!</span>",
-								"<span class='userdanger'>[user] tears off your tooth with [src]!</span>")
+				log_combat(user, H, "pulled a tooth out from", src)
+				H.visible_message("<span class='danger'>[user] pulls [H]'s tooth out with [src]!</span>",
+								"<span class='userdanger'>[user] pulls your tooth out with [src]!</span>")
 				var/armor = H.run_armor_check(O, "melee")
 				H.apply_damage(rand(1,5), BRUTE, O, armor)
 				playsound(H, 'hippiestation/sound/misc/tear.ogg', 40, 1, -1) //RIP AND TEAR. RIP AND TEAR.
 				H.emote("scream")
 			else
-				to_chat(user, "<span class='notice'>Your attempt to pull out a teeth fails...</span>")
+				to_chat(user, "<span class='notice'>You fail to pull a tooth out.</span>")
 				user.changeNext_move(0)
 			return 1
 		else
-			to_chat(user, "<span class='notice'>You are already trying to pull out a teeth!</span>")
+			to_chat(user, "<span class='notice'>You are already trying to pull a tooth out!</span>")
 		return 1
