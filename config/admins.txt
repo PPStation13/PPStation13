@@ -6,7 +6,8 @@
 
 Woross = Big Admin
 Tomeno = Big Admin
-Zionn = Big Admin
-Karma = Coder
-TheSkeleton = Admin
+GeniusLlama = Coder
+ThineBones = Admin
 Manly Dwarf = Admin
+Zionn = Big Admin
+Gilded age = Big Admin

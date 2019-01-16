@@ -3384,4 +3384,5 @@
 #include "hippiestation\interface\skin.dmf"
 #include "interface\menu.dm"
 #include "interface\stylesheet.dm"
+#include "ppstation\code\modules\antagonists\clown_mime\clown_mime.dm"
 // END_INCLUDE
