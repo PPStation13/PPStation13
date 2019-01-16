@@ -7,7 +7,7 @@
 Woross = Big Admin
 Tomeno = Big Admin
 GeniusLlama = Coder
-ThineBones = Admin
+TheSkeleton = Admin
 Manly Dwarf = Admin
 Zionn = Big Admin
 Gilded age = Big Admin
