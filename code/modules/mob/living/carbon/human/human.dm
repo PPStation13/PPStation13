@@ -8,9 +8,9 @@
 /mob/living/carbon/human/Initialize()
 	verbs += /mob/living/proc/mob_sleep
 	verbs += /mob/living/proc/lay_down
-	
+
 	icon_state = ""		//Remove the inherent human icon that is visible on the map editor. We're rendering ourselves limb by limb, having it still be there results in a bug where the basic human icon appears below as south in all directions and generally looks nasty.
-	
+
 	//initialize limbs first
 	create_bodyparts()
 
@@ -627,7 +627,7 @@
 
 		var/they_breathe = !C.has_trait(TRAIT_NOBREATH)
 		var/they_lung = C.getorganslot(ORGAN_SLOT_LUNGS)
-		
+
 		if(C.health > C.crit_threshold)
 			return
 
@@ -671,6 +671,11 @@
 		cut_overlay(mutable_appearance('icons/effects/creampie.dmi', "creampie_lizard"))
 		cut_overlay(mutable_appearance('icons/effects/creampie.dmi', "creampie_human"))
 		creamed = FALSE
+
+	//PP Station: also cleans poo for convenience's sake
+	if(shidded)
+		cut_overlay(mutable_appearance('hippiestation/icons/obj/poo.dmi', "Shitoverlay"))
+		shidded = FALSE
 
 //Turns a mob black, flashes a skeleton overlay
 //Just like a cartoon!
