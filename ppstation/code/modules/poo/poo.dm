@@ -6,6 +6,7 @@
 	list_reagents = list("nutriment" = 5)
 	tastes = list("crap" = 4)
 	icon_state = "LogInhand"
+	throwforce = 5 //:pepegrim:
 	var/poostun = TRUE
 	var/poostunlength = 20
 	var/pooblurlevel = 1
@@ -30,6 +31,11 @@
 	name = "rainbow poo"
 	desc = "A very happy looking piece of clown poo."
 	icon_state = "ClownTurdInhand"
+	bonus_reagents = list("vitamin" = 1, "colorful_reagent" = 10)
+	throwforce = 10 //:pepescheming:
+	poostunlength = 30
+	tastes = list("rainbows" = 4)
+	foodtype = SUGAR
 
 
 /obj/item/reagent_containers/food/snacks/poo/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
@@ -46,6 +52,7 @@
 	new/obj/effect/decal/cleanable/poopsplash(T)
 	if(reagents && reagents.total_volume)
 		reagents.reaction(hit_atom, TOUCH)
+
 	if(ishuman(hit_atom))
 		var/mob/living/carbon/human/H = hit_atom
 		var/mutable_appearance/shiddoverlay = mutable_appearance('ppstation/icons/poo.dmi')
