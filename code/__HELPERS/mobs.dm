@@ -21,11 +21,13 @@
 			return "000"
 
 /proc/random_hair_color()
-	switch(pick("brown",20;"black",15;"red",10;"grey",5))
+	switch(pick(20;"brown",15;"black",15;"blonde",10;"red",5;"grey"))
 		if("brown")
 			return pick("964","854","853","753","642","532","432","421")
 		if("black")
 			return pick("111","222","333")
+		if("blonde")
+			return pick("fdb","ca7","ffa","db7","ec8")
 		if("grey")
 			return pick("666","777","888","999","aaa","bbb","ccc")
 		if("red")
