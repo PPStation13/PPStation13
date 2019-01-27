@@ -1,10 +1,11 @@
 
 	//The mob should have a gender you want before running this proc. Will run fine without H
-/datum/preferences/proc/random_character(gender_override, soft_random = 0)
-	if(gender_override)
-		gender = gender_override
-	else
-		gender = pick(MALE,FEMALE)
+/datum/preferences/proc/random_character(gender_override)
+	if(!soft_random)
+		if(gender_override)
+			gender = gender_override
+		else
+			gender = pick(MALE,FEMALE)
 	underwear = random_underwear(gender)
 	undershirt = random_undershirt(gender)
 	socks = random_socks()
@@ -12,7 +13,7 @@
 		skin_tone = random_skin_tone()
 	hair_style = random_hair_style(gender)
 	facial_hair_style = random_facial_hair_style(gender)
-	hair_color = random_short_color()
+	hair_color = random_hair_color()
 	facial_hair_color = hair_color
 	eye_color = random_eye_color()
 	if(!pref_species)

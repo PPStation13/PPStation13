@@ -223,7 +223,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<h2>Body</h2>"
 			dat += "<a href='?_src_=prefs;preference=all;task=random'>Random Body</A> "
 			dat += "<a href='?_src_=prefs;preference=all'>Always Random Body: [be_random_body ? "Yes" : "No"]</A><br>"
-			dat += "<a href='?_src_=prefs;preference=all'>Soft Random: [soft_random ? "Yes" : "No"]</A><br>"
+			dat += "<a href='?_src_=prefs;preference=softrandom'>Less Random: [soft_random ? "Yes" : "No"]</A><br>"
 			dat += "<table width='100%'><tr><td width='24%' valign='top'>"
 
 			dat += "<b>Species:</b><BR><a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a><BR>"
@@ -669,8 +669,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			if(is_banned_from(user.ckey, rank))
 				HTML += "<font color=red>[rank]</font></td><td><a href='?_src_=prefs;bancheck=[rank]'> BANNED</a></td></tr>"
 				continue
-			if(is_banned_from(user.ckey, list(CLUWNEBAN, CATBAN)) && rank != SSjob.overflow_role) // hippie start -- adds our jobban checks	
-				HTML += "<font color=red>[rank]</font></td><td><a href='?_src_=prefs;jobbancheck=[rank]'> BANNED</a></td></tr>"	
+			if(is_banned_from(user.ckey, list(CLUWNEBAN, CATBAN)) && rank != SSjob.overflow_role) // hippie start -- adds our jobban checks
+				HTML += "<font color=red>[rank]</font></td><td><a href='?_src_=prefs;jobbancheck=[rank]'> BANNED</a></td></tr>"
 				continue // hippie end
 			var/required_playtime_remaining = job.required_playtime_remaining(user.client)
 			if(required_playtime_remaining)
@@ -1439,6 +1439,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("all")
 					be_random_body = !be_random_body
 
+				if("softrandom")
+					soft_random = !soft_random
+
 				if("hear_midis")
 					toggles ^= SOUND_MIDI
 
@@ -1518,7 +1521,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		real_name = pref_species.random_name(gender)
 
 	if(be_random_body)
-		random_character(gender, soft_random)
+		random_character(gender)
 
 	if(roundstart_checks)
 		if(CONFIG_GET(flag/humans_need_surnames) && (pref_species.id == "human"))

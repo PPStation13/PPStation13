@@ -20,6 +20,19 @@
 		else
 			return "000"
 
+/proc/random_hair_color()
+	switch(pick("brown",20;"black",15;"red",10;"grey",5))
+		if("brown")
+			return pick("964","854","853","753","642","532","432","421")
+		if("black")
+			return pick("111","222","333")
+		if("grey")
+			return pick("666","777","888","999","aaa","bbb","ccc")
+		if("red")
+			return pick("8","9","a") + pick("0","1","2","3") + "0"
+		else
+			return "000"
+
 /proc/random_underwear(gender)
 	if(!GLOB.underwear_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/underwear, GLOB.underwear_list, GLOB.underwear_m, GLOB.underwear_f)
