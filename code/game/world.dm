@@ -197,8 +197,9 @@ GLOBAL_VAR_INIT(bypass_tgs_reboot, world.system_type == UNIX && world.byond_buil
 /world/Reboot(reason = 0, fast_track = FALSE)
 	if (reason || fast_track) //special reboot, do none of the normal stuff
 		if (usr)
-			log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
-			message_admins("[key_name_admin(usr)] Has requested an immediate world restart via client side debugging tools")
+			log_admin("[key_name(usr)] has attempted to request an immediate world restart via client side debugging tools")
+			message_admins("[key_name_admin(usr)] has attempted to request an immediate world restart via client side debugging tools")
+			return 0
 		to_chat(world, "<span class='boldannounce'>Rebooting World immediately due to host request</span>")
 	else
 		to_chat(world, "<span class='boldannounce'>Rebooting world...</span>")
