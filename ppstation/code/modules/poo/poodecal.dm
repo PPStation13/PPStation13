@@ -7,6 +7,7 @@
 	desc = "A mighty log."
 	icon = 'ppstation/icons/poo.dmi'
 	icon_state = "Logs"
+	layer = 2.09 //Sorry LIBERALS
 	turf_loc_check = FALSE
 	mergeable_decal = FALSE
 
@@ -97,3 +98,28 @@
 	src.dir = pick(1, 2, 4, 8)
 	pixel_x = rand(-5, 5)
 	pixel_y = rand(-5, 5)
+//
+//welcome to the land of
+//PEE
+//population: 14 peellion
+//
+
+/obj/effect/decal/cleanable/peepuddle
+
+	name = "pee"
+	desc = "A puddle of pee."
+	icon = 'ppstation/icons/poo.dmi'
+	icon_state = "Piss"
+
+	turf_loc_check = FALSE
+
+/obj/effect/decal/cleanable/peepuddle/Initialize()
+	. = ..()
+	src.dir = pick(1, 2, 4, 8)
+	AddComponent(/datum/component/slippery, 60, NO_SLIP_WHEN_WALKING)
+	addtimer(CALLBACK(src, .proc/dry), 1 MINUTES)
+	pixel_x = rand(-5, 5)
+	pixel_y = rand(-5, 5)
+
+/obj/effect/decal/cleanable/peepuddle/proc/dry()
+	qdel(src)

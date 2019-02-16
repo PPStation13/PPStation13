@@ -1,3 +1,5 @@
+//made by woross with the help of Tomeno
+
 /datum/emote/living/carbon/human/poop
 	key = "poop"
 	key_third_person = "poops"
@@ -142,3 +144,49 @@
 
 		playsound(user, shiddsound, 50, 1, 5)
 		user.visible_message("<b>[user]</b> [message]")
+
+
+/datum/emote/living/carbon/human/pee
+	key = "pee"
+	key_third_person = "pees"
+
+//mob/living/proc/ResetPee(var/mob/living/carbon/human/user)
+//I have literally no idea how procs works so I will hack this into oblivion
+//	to_chat(user, "<span class='notice'>You feel like you may pee again.</span>")
+//	user.canpee = TRUE
+//nebo neco takovyho
+//to je ale hujerovina
+
+
+/datum/emote/living/carbon/human/pee/run_emote(mob/living/carbon/human/user, params)
+
+	message = "pees."
+	var/peesound = 'ppstation/sound/pee.ogg'
+
+	var/t_himself
+	if(user.gender == MALE)
+		t_himself = "himself"
+	else if(user.gender == FEMALE)
+		t_himself = "herself"
+
+	//if(user.canpee == FALSE)
+	if(user.lastpee > world.time - 1000)
+		to_chat(user, "<span class='warning'>You don't want to!</span>")
+		return
+	else
+		//user.canpee = FALSE
+		user.lastpee = world.time
+		if((user.w_uniform != null) || (user.wear_suit != null && (user.wear_suit.body_parts_covered & GROIN)))
+			message = "pees [t_himself]."
+		else
+			message = pick(	"wets the floor.",
+							"makes warm lemonade.",
+							"does a wee.",
+							"empties the tank.",
+							"sprinkles the tinkle.",
+							"takes a leak.")
+		//addtimer(CALLBACK(src, /mob/living/proc/ResetPee(user)), 2 SECONDS)
+		new/obj/effect/decal/cleanable/peepuddle(user.loc)
+		playsound(user, peesound, 60, 1, 5)
+		user.visible_message("<b>[user]</b> [message]")
+		return

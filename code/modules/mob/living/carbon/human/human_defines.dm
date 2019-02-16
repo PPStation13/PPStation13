@@ -54,6 +54,8 @@
 
 	var/creamed = FALSE //to use with creampie overlays
 	var/shidded = FALSE //Juicy PP Station exclusive ;)
+	//var/canpee  = TRUE  //Why do I keep coming back to this cursed file
+	var/lastpee= -1000		//because no one wants to help me with the timer :feelsoldman:
 
 	var/static/list/can_ride_typecache = typecacheof(list(/mob/living/carbon/human, /mob/living/simple_animal/slime, /mob/living/simple_animal/parrot))
 	var/lastpuke = 0
