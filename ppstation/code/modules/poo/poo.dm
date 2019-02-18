@@ -3,7 +3,7 @@
 	desc = "A humongous length of fecal cable."
 	icon = 'ppstation/icons/poo.dmi'
 	bitesize = 5
-	list_reagents = list("nutriment" = 5)
+	list_reagents = list("nutriment" = 5, "poo" = 10)
 	tastes = list("crap" = 4)
 	icon_state = "LogInhand"
 	throwforce = 5 //:pepegrim:
@@ -31,7 +31,7 @@
 	name = "rainbow poo"
 	desc = "A very happy looking piece of clown poo."
 	icon_state = "ClownTurdInhand"
-	bonus_reagents = list("vitamin" = 1, "colorful_reagent" = 10)
+	bonus_reagents = list("poo" = 10, "nutriment" = 10, "space_drugs" = 5)
 	throwforce = 10 //:pepescheming:
 	poostunlength = 30
 	tastes = list("rainbows" = 4)

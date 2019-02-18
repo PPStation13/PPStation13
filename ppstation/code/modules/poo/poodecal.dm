@@ -48,6 +48,7 @@
 /obj/effect/decal/cleanable/poopdecal/Initialize()
 	. = ..()
 	src.dir = pick(1, 2, 4, 8)
+	reagents.add_reagent("poo", 20)
 	AddComponent(/datum/component/slippery, 80, NO_SLIP_WHEN_WALKING, CALLBACK(src, .proc/on_slip))
 	pixel_x = rand(-10, 10)
 	pixel_y = rand(-10, 10)
@@ -81,6 +82,7 @@
 /obj/effect/decal/cleanable/poopsplash/Initialize()
 	. = ..()
 	src.dir = pick(1, 2, 3, 4, 5, 6, 7, 8)
+	reagents.add_reagent("poo", 10)
 	pixel_x = rand(-5, 5)
 	pixel_y = rand(-5, 5)
 
@@ -96,6 +98,7 @@
 /obj/effect/decal/cleanable/poopdirt/Initialize()
 	. = ..()
 	src.dir = pick(1, 2, 4, 8)
+	reagents.add_reagent("poo", 5)
 	pixel_x = rand(-5, 5)
 	pixel_y = rand(-5, 5)
 //
@@ -116,6 +119,7 @@
 /obj/effect/decal/cleanable/peepuddle/Initialize()
 	. = ..()
 	src.dir = pick(1, 2, 4, 8)
+	reagents.add_reagent("pee", 10)
 	AddComponent(/datum/component/slippery, 60, NO_SLIP_WHEN_WALKING)
 	addtimer(CALLBACK(src, .proc/dry), 1 MINUTES)
 	pixel_x = rand(-5, 5)
