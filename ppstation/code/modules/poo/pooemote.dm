@@ -173,9 +173,33 @@
 	if(user.lastpee > world.time - 1000)
 		to_chat(user, "<span class='warning'>You don't want to!</span>")
 		return
+
+
+
 	else
 		//user.canpee = FALSE
 		user.lastpee = world.time
+
+		for(var/obj/structure/toilet/M in get_turf(user))
+			if(M.open == TRUE)
+				to_chat(user, "<span class='notice'>You pee into the toilet peacefully.</span>")
+				playsound(user, peesound, 60, 1, 5)
+				return
+
+		for(var/mob/living/M in get_turf(user))
+			if(M == user)
+				continue
+			else
+				M.apply_damage(20, "STAMINA")
+				user.log_message("peed on [key_name(M)]", LOG_ATTACK)
+				user.visible_message("<span class='warning'><b>[user]</b> pees on <b>[M]</b>!</span>", "<span class='warning'>You pee on <b>[M]</b>!</span>")
+
+				SEND_SIGNAL(M, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
+				M.wash_cream()
+				M.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
+
+				M.adjust_blurriness(1)
+
 		if((user.w_uniform != null) || (user.wear_suit != null && (user.wear_suit.body_parts_covered & GROIN)))
 			message = "pees [t_himself]."
 		else
@@ -187,6 +211,6 @@
 							"takes a leak.")
 		//addtimer(CALLBACK(src, /mob/living/proc/ResetPee(user)), 2 SECONDS)
 		new/obj/effect/decal/cleanable/peepuddle(user.loc)
-		playsound(user, peesound, 60, 1, 5)
+		playsound(user, peesound, 85, 1, 5)
 		user.visible_message("<b>[user]</b> [message]")
 		return
