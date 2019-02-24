@@ -49,8 +49,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	//character preferences
 	var/real_name						//our character's name
-	var/be_random_name = 0				//whether we'll have a random name every round
-	var/be_random_body = 0				//whether we'll have a random body every round
+	var/be_random_name = 1				//whether we'll have a random name every round
+	var/be_random_body = 1				//whether we'll have a random body every round
 	var/soft_random = 0
 	var/gender = MALE					//gender of character (well duh)
 	var/age = 30						//age of character
@@ -190,10 +190,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<center><b>Current Quirks:</b> [all_quirks.len ? all_quirks.Join(", ") : "None"]</center>"
 			dat += "<h2>Identity</h2>"
 			dat += "<table width='100%'><tr><td width='75%' valign='top'>"
+			//PP Station
+			if(!((user.client.prefs.be_random_body == 1)&&(user.client.prefs.be_random_name == 1)))
+				dat += "<b>Your character's name and body are not randomized. Your character might get recognized as a character from previous rounds. We strongly recommend randomizing.</b><br>"
+			//PP Station
 			if(is_banned_from(user.ckey, "Appearance"))
 				dat += "<b>You are banned from using custom names and appearances. You can continue to adjust your characters, but you will be randomised once you join the game.</b><br>"
-			dat += "<a href='?_src_=prefs;preference=name;task=random'>Random Name</A> "
-			dat += "<a href='?_src_=prefs;preference=name'>Always Random Name: [be_random_name ? "Yes" : "No"]</a><BR>"
+			//dat += "<a href='?_src_=prefs;preference=name;task=random'>Random Name</A> "
+			dat += "<a href='?_src_=prefs;preference=name'>Randomize name: [be_random_name ? "Yes" : "No"]</a><BR>"
 
 			dat += "<b>Name:</b> "
 			dat += "<a href='?_src_=prefs;preference=name;task=input'>[real_name]</a><BR>"
@@ -221,9 +225,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "</tr></table>"
 
 			dat += "<h2>Body</h2>"
-			dat += "<a href='?_src_=prefs;preference=all;task=random'>Random Body</A> "
-			dat += "<a href='?_src_=prefs;preference=all'>Always Random Body: [be_random_body ? "Yes" : "No"]</A><br>"
-			dat += "<a href='?_src_=prefs;preference=softrandom'>Less Random: [soft_random ? "Yes" : "No"]</A><br>"
+			//dat += "<a href='?_src_=prefs;preference=all;task=random'>Random Body</A> "
+			dat += "<a href='?_src_=prefs;preference=all'>Randomize body: [be_random_body ? "Yes" : "No"]</A><br>"
+			dat += "<a href='?_src_=prefs;preference=softrandom'>Soft Random: [soft_random ? "Yes" : "No"]</A><br>"
 			dat += "<table width='100%'><tr><td width='24%' valign='top'>"
 
 			dat += "<b>Species:</b><BR><a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a><BR>"

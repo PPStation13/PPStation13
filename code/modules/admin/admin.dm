@@ -46,7 +46,17 @@
 		// hippie start -- warning when player has related accounts
 		if (M.client.related_accounts_cid || M.client.related_accounts_ip)
 			body += "<br><b><font color=red>Player has related accounts</font></b>"
-		// hippie end	
+		// hippie end
+
+		//PP Station
+
+		if(M.client.randombody == 0)
+			body += "<br><font color=red>Player's body is not random</font>"
+		if(M.client.randomname == 0)
+			body += "<br><font color=red>Player's name is not random</font>"
+
+		//
+
 		var/rep = 0
 		rep += SSpersistence.antag_rep[M.ckey]
 		body += "<br><br>Antagonist reputation: [rep]"

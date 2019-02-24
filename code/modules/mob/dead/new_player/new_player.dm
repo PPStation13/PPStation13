@@ -494,6 +494,18 @@
 		mind.active = 0					//we wish to transfer the key manually
 		mind.transfer_to(H)					//won't transfer key since the mind is not active
 
+	//PP Station 13 - snowflaking will be defeated
+	if(client.prefs.be_random_name == 1)
+		client.randomname = 1
+	else
+		client.randomname = 0
+
+	if(client.prefs.be_random_body == 1)
+		client.randombody = 1
+	else
+		client.randombody = 0
+
+
 	H.name = real_name
 
 	. = H
