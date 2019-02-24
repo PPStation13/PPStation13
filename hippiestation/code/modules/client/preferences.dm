@@ -4,7 +4,7 @@
 
 /datum/preferences
 	features = list("mcolor" = "FFF", "tail_lizard" = "Smooth", "tail_human" = "None", "snout" = "Round", "horns" = "None", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs", "moth_wings" = "Plain", "ipc_screen" = "Sunburst")
-	var/gear_points = 5
+	var/gear_points = 0
 	var/list/gear_categories
 	var/list/chosen_gear
 	var/gear_tab
@@ -83,6 +83,7 @@
 			if(!gear_tab)
 				gear_tab = GLOB.loadout_items[1]
 			. += "<table align='center' width='100%'>"
+			. += "<tr><td colspan=4><center>The gear system is currently disabled.</center></td></tr>"
 			. += "<tr><td colspan=4><center><b><font color='[gear_points == 0 ? "#E67300" : "#3366CC"]'>[gear_points]</font> loadout points remaining.</b> \[<a href='?_src_=prefs;preference=gear;clear_loadout=1'>Clear Loadout</a>\]</center></td></tr>"
 			. += "<tr><td colspan=4><center>You can only choose one item per category, unless it's an item that spawns in your backpack or hands.</center></td></tr>"
 			. += "<tr><td colspan=4><center><b>"
