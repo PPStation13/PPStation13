@@ -567,7 +567,8 @@ SUBSYSTEM_DEF(job)
 			return
 	M.forceMove(get_turf(A))
 
-/datum/controller/subsystem/job/proc/SendToLateJoin(mob/M, buckle = TRUE)
+///datum/controller/subsystem/job/proc/SendToLateJoin(mob/M, buckle = TRUE) PP
+/datum/controller/subsystem/job/proc/SendToLateJoin(mob/M, buckle = FALSE)
 	if(M.mind && M.mind.assigned_role && length(GLOB.jobspawn_overrides[M.mind.assigned_role])) //We're doing something special today.
 		SendToAtom(M,pick(GLOB.jobspawn_overrides[M.mind.assigned_role]),FALSE)
 		return
