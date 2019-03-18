@@ -4,6 +4,9 @@
 	key = "poop"
 	key_third_person = "poops"
 
+/datum/emote/living/carbon/human/poop/poo
+	key = "poo"
+
 /datum/emote/living/carbon/human/poop/run_emote(mob/living/carbon/human/user, params)
 
 	var/mutable_appearance/shiddoverlay = mutable_appearance('ppstation/icons/poo.dmi')
