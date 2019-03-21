@@ -3383,10 +3383,10 @@
 #include "hippiestation\interface\skin.dmf"
 #include "interface\menu.dm"
 #include "interface\stylesheet.dm"
+#include "ppstation\code\modules\chess\realchess.dm"
 #include "ppstation\code\modules\clown_mime\clown_mime.dm"
 #include "ppstation\code\modules\poo\chemistry.dm"
 #include "ppstation\code\modules\poo\poo.dm"
 #include "ppstation\code\modules\poo\poodecal.dm"
 #include "ppstation\code\modules\poo\pooemote.dm"
-#include "ppstation\code\modules\chess\realchess.dm"
 // END_INCLUDE

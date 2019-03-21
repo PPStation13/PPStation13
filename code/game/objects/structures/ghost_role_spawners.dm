@@ -69,9 +69,10 @@
 
 /datum/outfit/ashwalker
 	name ="Ashwalker"
-	head = /obj/item/clothing/head/helmet/gladiator
-	uniform = /obj/item/clothing/under/gladiator/ash_walker
-
+	//nah this looks really lame
+	//head = /obj/item/clothing/head/helmet/gladiator
+	//uniform = /obj/item/clothing/under/gladiator/ash_walker
+	suit = /obj/item/clothing/suit/poncho //That's more like it!
 
 //Timeless prisons: Spawns in Wish Granter prisons in lavaland. Ghosts become age-old users of the Wish Granter and are advised to seek repentance for their past.
 /obj/effect/mob_spawn/human/exile

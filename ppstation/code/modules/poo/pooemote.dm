@@ -47,6 +47,15 @@
 				playsound(user, shiddsound, 30, 1, 5)
 				return
 
+		for(var/obj/item/reagent_containers/glass/bucket/N in get_turf(user))
+			if(!(N.reagents.total_volume >= N.reagents.maximum_volume))
+				user.nutrition = user.nutrition - 75
+				N.reagents.add_reagent("poo", 20)
+				to_chat(user, "<span class='notice'>You take a peaceful dump into the bucket.</span>")
+				playsound(user, shiddsound, 30, 1, 5)
+				return
+
+
 		for(var/mob/living/M in get_turf(user))
 			if(M == user)
 				continue
@@ -187,6 +196,13 @@
 			if(M.open == TRUE)
 				to_chat(user, "<span class='notice'>You pee into the toilet peacefully.</span>")
 				playsound(user, peesound, 60, 1, 5)
+				return
+
+		for(var/obj/item/reagent_containers/glass/bucket/N in get_turf(user))
+			if(!(N.reagents.total_volume >= N.reagents.maximum_volume))
+				N.reagents.add_reagent("pee", 10)
+				to_chat(user, "<span class='notice'>You pee into the bucket peacefully.</span>")
+				playsound(user, peesound, 100, 1, 5)
 				return
 
 		for(var/mob/living/M in get_turf(user))
