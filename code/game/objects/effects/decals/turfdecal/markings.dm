@@ -151,6 +151,10 @@
 /obj/effect/turf_decal/plaque
 	icon_state = "plaque"
 
+/obj/effect/turf_decal/plaque/pp
+	name = "plaque"
+	icon = 'ppstation/icons/decals.dmi'
+
 /obj/effect/turf_decal/raven_ship_sign
 	icon_state = "RAVEN2"
 
