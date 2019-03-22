@@ -539,3 +539,7 @@
 /datum/map_template/shuttle/snowdin/excavation
 	suffix = "excavation"
 	name = "Snowdin Excavation Elevator"
+
+/datum/map_template/shuttle/cargo/pp
+	suffix = "pp"
+	name = "cargo ferry (PP)"

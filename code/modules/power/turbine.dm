@@ -77,7 +77,8 @@
 	if(!turbine)
 		stat |= BROKEN
 
-
+//PP Station was here
+//#define COMPFRICTION 5e5
 #define COMPFRICTION 5e5
 
 
@@ -163,8 +164,12 @@
 // These are crucial to working of a turbine - the stats modify the power output. TurbGenQ modifies how much raw energy can you get from
 // rpms, TurbGenG modifies the shape of the curve - the lower the value the less straight the curve is.
 
-#define TURBGENQ 100000
-#define TURBGENG 0.5
+// PP Station was here
+
+//#define TURBGENQ 100000
+//#define TURBGENG 0.5
+#define TURBGENQ 300000
+#define TURBGENG 0.85
 
 /obj/machinery/power/turbine/Initialize()
 	. = ..()

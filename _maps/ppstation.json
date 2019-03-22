@@ -1,0 +1,14 @@
+{
+    "map_name": "PP Station",
+    "map_path": "map_files/PPStation",
+    "map_file": "ppstation.dmm",
+	"minetype": null,
+	"space_ruin_levels": 0,
+	"space_empty_levels": 0,
+	"allow_custom_shuttles": false,
+    "shuttles": {
+        "emergency": "emergency_box",
+        "ferry": "ferry_fancy",
+		"cargo": "cargo_pp"
+    }
+}

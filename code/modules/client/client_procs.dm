@@ -162,8 +162,13 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	chatOutput = new /datum/chatOutput(src)
 	TopicData = null							//Prevent calls to client.Topic from connect
 
-	if(connection != "seeker" && connection != "web")//Invalid connection type.
-		return null
+	if(connection == "telnet")
+		//. = ..()
+		src << "hello to telnet"
+		//return
+
+	//if(connection != "seeker" && connection != "web")//Invalid connection type.
+	//	return null
 
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
