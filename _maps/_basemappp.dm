@@ -1,5 +1,7 @@
 //#define LOWMEMORYMODE //uncomment this to load centcom and runtime station and thats it.
 
+#define FORCE_MAP "_maps/ppstation.json"
+
 #include "map_files\generic\CentCom.dmm"
 
 #ifndef LOWMEMORYMODE
