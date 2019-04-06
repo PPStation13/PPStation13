@@ -275,6 +275,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["positive_quirks"]	>> positive_quirks
 	S["negative_quirks"]	>> negative_quirks
 	S["neutral_quirks"]		>> neutral_quirks
+	
+	S["soft_random"]		>> soft_random
 
 	//try to fix any outdated data if necessary
 	if(needs_update >= 0)
@@ -419,6 +421,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["positive_quirks"]		, positive_quirks)
 	WRITE_FILE(S["negative_quirks"]		, negative_quirks)
 	WRITE_FILE(S["neutral_quirks"]		, neutral_quirks)
+	
+	WRITE_FILE(S["soft_random"]		, soft_random) //PP Station
 
 	return 1
 
