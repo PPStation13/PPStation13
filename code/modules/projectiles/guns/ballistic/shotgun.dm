@@ -124,10 +124,12 @@
 	return 1
 
 /obj/item/gun/ballistic/shotgun/boltaction/attackby(obj/item/A, mob/user, params)
+	. = ..()
+	if(.)
+		return
 	if(!bolt_open)
 		to_chat(user, "<span class='notice'>The bolt is closed!</span>")
 		return
-	. = ..()
 
 /obj/item/gun/ballistic/shotgun/boltaction/examine(mob/user)
 	..()
