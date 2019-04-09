@@ -48,7 +48,7 @@
 	name = "Explosion"
 	id = "potassium_explosion"
 	required_reagents = list("water" = 1, "potassium" = 1)
-	strengthdiv = 10
+	strengthdiv = 7
 
 /datum/chemical_reaction/reagent_explosion/potassium_explosion/holyboom
 	name = "Holy Explosion"
