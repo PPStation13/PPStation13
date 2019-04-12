@@ -652,6 +652,11 @@
 	// FEED ME SEYMOUR
 	if(S.has_reagent("strangereagent", 1))
 		spawnplant()
+	
+	if(S.has_reagent("nutriment", 1))
+		yieldmod += 0.25
+		adjustHealth(round(S.get_reagent_amount("nutriment") * 0.75))
+		adjustNutri(round(S.get_reagent_amount("nutriment") * 1.25))
 
 	// The best stuff there is. For testing/debugging.
 	if(S.has_reagent("adminordrazine", 1))
