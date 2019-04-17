@@ -279,6 +279,11 @@
 	summon_backup(15)
 	say("GUARDS!!")
 
+/mob/living/simple_animal/hostile/syndicate/civilian/prisoner
+
+	faction = list("pirate")
+	name = "Syndicate Prisoner"
+
 
 /mob/living/simple_animal/hostile/viscerator
 	name = "viscerator"

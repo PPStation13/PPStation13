@@ -256,6 +256,20 @@
 	for(var/i in 1 to 5)
 		new /obj/item/reagent_containers/pill/zoom(src)
 
+//Peee peeeeee
+
+/obj/item/storage/pill_bottle/jenkem
+	name = "crunch pill bottle"
+	desc = "A bottle of pills containing the foul-tasting but potent drug crunch."
+
+/obj/item/storage/pill_bottle/jenkem/PopulateContents()
+	for(var/i in 1 to 5)
+		new /obj/item/reagent_containers/pill/jenkem(src)
+
+
+
+//Poo pooooo
+
 /obj/item/storage/pill_bottle/happy
 	name = "suspicious pill bottle"
 	desc = "There is a smiley on the top."

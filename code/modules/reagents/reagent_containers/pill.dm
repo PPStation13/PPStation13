@@ -211,6 +211,12 @@
 	icon_state = "pill22"
 	roundstart = TRUE
 
+/obj/item/reagent_containers/pill/jenkem
+	name = "crunch pill"
+	desc = "A pill of the notorious drug \"crunch\", produced from unknown sources by pirates."
+	list_reagents = list("jenkem" = 20)
+	icon_state = "pill22"
+	roundstart = TRUE
 
 /obj/item/reagent_containers/pill/floorpill
 	name = "floorpill"

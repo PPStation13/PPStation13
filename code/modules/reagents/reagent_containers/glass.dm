@@ -268,6 +268,18 @@
 		SLOT_GENERC_DEXTROUS_STORAGE
 	)
 
+
+/obj/item/reagent_containers/glass/bucket/pee
+
+/obj/item/reagent_containers/glass/bucket/pee/Initialize()
+	reagents.add_reagent("pee", rand(50,70))
+
+/obj/item/reagent_containers/glass/bucket/poo
+
+/obj/item/reagent_containers/glass/bucket/poo/Initialize()
+	reagents.add_reagent("poo", rand(50,70))
+
+
 /obj/item/reagent_containers/glass/bucket/attackby(obj/O, mob/user, params)
 	if(istype(O, /obj/item/mop))
 		if(reagents.total_volume < 1)
