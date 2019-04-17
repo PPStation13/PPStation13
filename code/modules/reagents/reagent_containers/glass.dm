@@ -271,13 +271,11 @@
 
 /obj/item/reagent_containers/glass/bucket/pee
 
-/obj/item/reagent_containers/glass/bucket/pee/Initialize()
-	reagents.add_reagent("pee", rand(50,70))
+	list_reagents = list("pee" = 70)
 
 /obj/item/reagent_containers/glass/bucket/poo
 
-/obj/item/reagent_containers/glass/bucket/poo/Initialize()
-	reagents.add_reagent("poo", rand(50,70))
+	list_reagents = list("poo" = 70)
 
 
 /obj/item/reagent_containers/glass/bucket/attackby(obj/O, mob/user, params)
