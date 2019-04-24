@@ -17,10 +17,10 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	force = 10
 	slot_flags = ITEM_SLOT_BELT
-	fire_sound = "hippiestation/sound/weapons/gunshot_magnum.ogg"
+	fire_sound = 'sound/weapons/gunshot.ogg'
 	var/lock = FALSE
-	var/lock_sound = "sound/weapons/bulletinsert.ogg"
-	var/insert_sound = "sound/weapons/bulletinsert.ogg"
+	var/lock_sound = 'sound/weapons/gun_dry_fire.ogg'
+	var/insert_sound = 'sound/weapons/gun_dry_fire.ogg'
 	weapon_weight = WEAPON_MEDIUM
 	spawnwithmagazine = FALSE
 	casing_ejector = FALSE
@@ -89,7 +89,7 @@
 	name = "poo"
 	icon = 'ppstation/icons/Rump_Raider.dmi'
 	icon_state = "poojectile"
-	suppressed = TRUE
+	suppressed = FALSE
 	damage = 20
 	range = 12
 	damage_type = BRUTE
