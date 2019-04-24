@@ -20,7 +20,7 @@
 	fire_sound = 'sound/weapons/gunshot.ogg'
 	var/lock = FALSE
 	var/lock_sound = 'sound/weapons/gun_dry_fire.ogg'
-	var/insert_sound = 'sound/weapons/gun_dry_fire.ogg'
+	var/insert_sound = 'sound/weapons/bulletinsert.ogg'
 	weapon_weight = WEAPON_MEDIUM
 	spawnwithmagazine = FALSE
 	casing_ejector = FALSE
