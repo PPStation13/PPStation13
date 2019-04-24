@@ -3391,4 +3391,5 @@
 #include "ppstation\code\modules\poo\poo.dm"
 #include "ppstation\code\modules\poo\poodecal.dm"
 #include "ppstation\code\modules\poo\pooemote.dm"
+#include "ppstation\code\modules\poo\pooguns.dm"
 // END_INCLUDE

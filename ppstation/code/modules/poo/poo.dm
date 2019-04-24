@@ -7,6 +7,10 @@
 	tastes = list("crap" = 4)
 	icon_state = "LogInhand"
 	throwforce = 5 //:pepegrim:
+
+	lefthand_file = 'ppstation/icons/poohand_left.dmi'
+	righthand_file = 'ppstation/icons/poohand_right.dmi'
+
 	var/poostun = TRUE
 	var/poostunlength = 20
 	var/pooblurlevel = 1
