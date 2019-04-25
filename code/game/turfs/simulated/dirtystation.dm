@@ -37,6 +37,7 @@
 	if(prob(80))	//mid dirt  - 1/15
 		return
 
+
 		//Construction zones. Blood, sweat, and oil.  Oh, and dirt.
 	var/static/list/engine_dirt_areas = typecacheof(list(/area/engine,
 														/area/crew_quarters/heads/chief,
@@ -60,13 +61,17 @@
 
 		//Bathrooms. Blood, vomit, and shavings in the sinks.
 	var/static/list/bathroom_dirt_areas = typecacheof(list(	/area/crew_quarters/toilet,
+															/area/hallway/secondary/entry,
 															/area/awaymission/research/interior/bathroom))
 	if(is_type_in_typecache(A, bathroom_dirt_areas))
 		if(prob(40))
-			if(prob(90))
+			if(prob(70))
 				new /obj/effect/decal/cleanable/vomit/old(src)
 			else
-				new /obj/effect/decal/cleanable/blood/old(src)
+				if(prob(30))
+					new /obj/effect/decal/cleanable/blood/old(src)
+				else
+					new /obj/effect/decal/cleanable/poopdirt(src)
 		return
 
 		//Hangars and pods covered in oil.
