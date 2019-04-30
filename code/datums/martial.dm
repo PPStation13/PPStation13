@@ -25,7 +25,7 @@
 
 		A.curbstomping = TRUE
 
-		if((!do_mob(A, D, 90) || A.zone_selected != BODY_ZONE_HEAD))
+		if((!do_mob(A, D, 150) || A.zone_selected != BODY_ZONE_HEAD))
 			D.visible_message("<span class='notice'>[A] has stepped away from [D]'s head.</span>", "<span class='notice'>[A] has stepped away from your head.</span>")
 			A.curbstomping = FALSE
 			return 1
@@ -42,6 +42,10 @@
 			A.pixel_y = A.pixel_y-5
 			A.pixel_x = A.pixel_x - increment
 			sleep(0.2)
+			
+		if(!(A.zone_selected == BODY_ZONE_HEAD &&!(D.mobility_flags & MOBILITY_STAND) && get_turf(A) == get_turf(D)))
+			A.curbstomping = FALSE
+			return 1
 
 		var/turf/T = get_turf(D)
 		var/turf/target = get_ranged_target_turf(D, turn(D.dir, rand(1,360)), 2)
