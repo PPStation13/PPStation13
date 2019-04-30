@@ -44,7 +44,12 @@
 			sleep(0.2)
 			
 		if(!(A.zone_selected == BODY_ZONE_HEAD &&!(D.mobility_flags & MOBILITY_STAND) && get_turf(A) == get_turf(D)))
+		
+			A.SetStun(0)
 			A.curbstomping = FALSE
+			for(var/i in 1 to 10) //Fix the curbstomper's offset
+				A.pixel_x = A.pixel_x + increment
+				sleep(0.1)
 			return 1
 
 		var/turf/T = get_turf(D)
