@@ -1,3 +1,13 @@
+// PP Station 13 Hobo Module
+// Coded by woross, beautiful sprites hand drawn by Old Man
+// Contains hobo clothes and the job itself
+
+
+//
+// HOBO CLOTHES
+//
+
+
 /obj/item/clothing/under/hobo
 	alternate_worn_icon = 'ppstation/icons/HoboClothes.dmi'
 	icon = 'ppstation/icons/HoboClothes.dmi'
@@ -7,11 +17,15 @@
 	item_state = "Hobo"
 	item_color = "Hobo"
 	can_adjust = 0
+//
+// HOBO JOB
+//
 
 /obj/effect/landmark/start/hobo
 	name = "Hobo"
 	icon = 'ppstation/icons/HoboClothes.dmi'
 	icon_state = "hobospawn"
+
 
 /datum/job/hobo
 	title = "Hobo"
@@ -61,15 +75,18 @@
 					"/obj/item/clothing/suit/armor/makeshift",
 					"/obj/item/clothing/suit/armor/vest",
 					"/obj/item/clothing/suit/hazardvest",
-					"/obj/item/clothing/suit/nerdshirt",
-					"/obj/item/clothing/suit/vapeshirt",
+				// 	"/obj/item/clothing/suit/nerdshirt", these are too damn ugly
+				//	"/obj/item/clothing/suit/vapeshirt",
 					"/obj/item/clothing/suit/jacket")
 
 	if(prob(20))
 		head = pick("/obj/item/clothing/head/foilhat", //pepegrim
 					"/obj/item/clothing/head/helmet/roman",
 					"/obj/item/clothing/head/helmet/larp",
+					"/obj/item/clothing/head/pp/horn_helmet",
+					"/obj/item/clothing/head/pp/oldbeanie",
 					"/obj/item/clothing/head/fedora",
+					"/obj/item/clothing/head/pp/edwin," //Awes!
 					"/obj/item/clothing/head/flatcap",
 					"/obj/item/clothing/head/bandana",
 					"/obj/item/clothing/head/cone",

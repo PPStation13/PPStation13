@@ -16,7 +16,66 @@
 	return 0
 
 /datum/martial_art/proc/harm_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
-	return 0
+
+		//PP WAS HERE: CURBSTOMPING!!!!
+		//WRITTEN BY WOROSS
+		//to use, you also have to add a curbstomping variable to the human defines
+	if( !(D.mobility_flags & MOBILITY_STAND) && get_turf(A) == get_turf(D) && !A.curbstomping && A.zone_selected == BODY_ZONE_HEAD)
+		D.visible_message("<span class='warning'>[A] prepares to curbstomp [D]!</span>", "<span class='warning'>[A] prepares to curbstomp you!</span>")
+
+		A.curbstomping = TRUE
+
+		if((!do_mob(A, D, 90) || A.zone_selected != BODY_ZONE_HEAD))
+			D.visible_message("<span class='notice'>[A] has stepped away from [D]'s head.</span>", "<span class='notice'>[A] has stepped away from your head.</span>")
+			A.curbstomping = FALSE
+			return 1
+
+		A.Stun(1000000)
+		A.say("Now say goodnight!") //RIP
+
+		var/increment = (( D.lying / 90 ) - 2) //disgusting
+		for(var/i in 1 to 5)
+			A.pixel_y = A.pixel_y+5
+			A.pixel_x = A.pixel_x - increment
+			sleep(0.2)
+		for(var/i in 1 to 5)
+			A.pixel_y = A.pixel_y-5
+			A.pixel_x = A.pixel_x - increment
+			sleep(0.2)
+
+		var/turf/T = get_turf(D)
+		var/turf/target = get_ranged_target_turf(D, turn(D.dir, rand(1,360)), 2)
+		playsound(A, 'sound/effects/hit_punch.ogg', 80, 1, -1)
+		playsound(A, 'ppstation/sound/crunch.wav', 100, 1, 5)
+		playsound(A, 'sound/effects/blobattack.ogg', 80, 1, 5)
+		for(var/mob/M in urange(8, A))
+			shake_camera(M, 2, 3)
+		var/obj/item/organ/brain/B = D.getorganslot(ORGAN_SLOT_BRAIN)
+		if(B)
+			B.Remove(D)
+			B.forceMove(T)
+			var/datum/callback/gibspawner = CALLBACK(GLOBAL_PROC, /proc/spawn_atom_to_turf, /obj/effect/gibspawner/generic, B, 1, FALSE, D)
+			B.throw_at(target, 2, 1, callback=gibspawner)
+
+		if(D.get_damage_amount() > 190)
+			D.gib()
+		else
+			D.apply_damage_type(200)
+
+		A.SetStun(0)
+		A.curbstomping = FALSE
+
+		for(var/i in 1 to 10) //Fix the curbstomper's offset
+			A.pixel_x = A.pixel_x + increment
+			sleep(0.1)
+
+		D.visible_message("<span class='warning'>[A] curbstomps [D]!</span>", "<span class='warning'>[A] curbstomps you!</span>")
+		log_combat(A, D, "curbstomped")
+		return 1
+
+	else
+
+		return 0
 
 /datum/martial_art/proc/grab_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	return 0
@@ -40,6 +99,7 @@
 
 	var/atk_verb = A.dna.species.attack_verb
 	if(!(D.mobility_flags & MOBILITY_STAND))
+
 		atk_verb = "kick"
 
 	switch(atk_verb)

@@ -31,3 +31,6 @@
 		burning = 0
 		set_light(0)
 		STOP_PROCESSING(SSobj, src)
+
+/obj/structure/bonfire/hobobarrel/proc/is_hot()
+	return(burning)

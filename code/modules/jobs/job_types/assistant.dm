@@ -1,6 +1,8 @@
 /*
 Assistant
 */
+/datum/job/hobo //Putting this here just to make hobo appear first
+
 /datum/job/assistant
 	title = "Assistant"
 	flag = ASSISTANT
