@@ -197,19 +197,19 @@
 /datum/uplink_item/implants/macrobomb
 	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/traitor)
 
-/datum/uplink_item/dangerous/hockey
+/* /datum/uplink_item/dangerous/hockey
 	name = "Ka-nada Hockey Set"
 	desc = "Become one of the legends of the most brutal game in space. The items cannot be taken off once you wear them."
 	item = /obj/item/storage/box/syndie_kit/hockey
 	cost = 20
-	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/infiltration)
+	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/infiltration)*/ This is bloody trash
 
-/datum/uplink_item/dangerous/bowling
+/* /datum/uplink_item/dangerous/bowling
 	name = "Bowling Set"
 	desc = "Niko, it's me, your cousin! Let's go bowling."
 	item = /obj/item/storage/box/syndie_kit/bowling
 	cost = 12
-	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/infiltration)
+	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/infiltration) */
 
 /datum/uplink_item/dangerous/wrestling
 	name = "Wrestling Set"
@@ -321,12 +321,12 @@
 	cost = 13 // the math has been done, I assure you.
 	surplus = 25 // let's maybe not have players waste 13 TC on ammo every time they get a crate
 
-/datum/uplink_item/dangerous/armstrong
+/*/datum/uplink_item/dangerous/armstrong
 	name = "Armstrong Style Kit"
 	desc = "A kit with the necessary equipment to become an excellent martial artist, and terrible parent!"
 	item = /obj/item/storage/box/syndie_kit/armstrong
 	cost = 14
-	surplus = 20 // someone who respects the eldritch god Nar-Sie a little (((too much))) complained
+	surplus = 20 */// someone who respects the eldritch god Nar-Sie a little (((too much))) complained
 
 /datum/uplink_item/device_tools/brainwash_disk
 	restricted_roles = list("Medical Doctor", "Chief Medical Officer")
