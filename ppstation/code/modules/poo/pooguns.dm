@@ -25,6 +25,13 @@
 	spawnwithmagazine = FALSE
 	casing_ejector = FALSE
 
+/obj/item/weaponcrafting/stock/attackby(obj/item/P, mob/user, params)
+	if(istype (P, /obj/item/pipe))
+		to_chat(user, "<span class='notice'>You assemble a primitive pistol.</span>")
+		qdel(P)
+		qdel(src)
+		user.put_in_hands(new/obj/item/gun/ballistic/poopistol)
+
 /obj/item/gun/ballistic/poopistol/attackby(obj/item/A, mob/living/user, params)
 	if (!chambered)
 		if (lock)

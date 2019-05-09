@@ -1,7 +1,7 @@
 /mob/living/carbon/proc/pp_jump(atom/A) //AKA BLOODY JUMP
 
 	face_atom(A)
-	if( (mobility_flags & MOBILITY_MOVE) && (has_gravity() || A.has_gravity()) && !jumping && (!handcuffed || !pulledby) /*stay De Morganmad liberals*/ && !legcuffed )
+	if( (mobility_flags & (MOBILITY_MOVE)) && mobility_flags & (MOBILITY_STAND)) && (has_gravity() || A.has_gravity()) && !jumping && (!handcuffed || !pulledby) /*stay De Morganmad liberals*/ && !legcuffed )
 
 		if(getStaminaLoss() > 60)
 			return
