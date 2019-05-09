@@ -212,7 +212,7 @@
 		return
 	// Don't break if they're just flying past
 	if(AM.throwing)
-		addtimer(CALLBACK(src, .proc/throw_check, AM), 5)
+		addtimer(CALLBACK(src, .proc/throw_check, AM), 2)
 	else
 		check_break(AM)
 

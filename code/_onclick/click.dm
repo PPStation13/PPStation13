@@ -290,50 +290,8 @@
 /mob/proc/MiddleClickOn(atom/A)
 	return
 
-/mob/living/carbon/MiddleClickOn(atom/A) //AKA BLOODY JUMP
-	//if(!stat && mind && iscarbon(A) && A != src)
-	//	var/datum/antagonist/changeling/C = mind.has_antag_datum(/datum/antagonist/changeling)
-	//	if(C && C.chosen_sting)
-	//		C.chosen_sting.try_to_sting(src,A)
-	//		next_click = world.time + 5
-	//		return
-	//swap_hand() LOL LMAO POO POO POOOOOO lings SUCK
-	face_atom(A)
-	if( (mobility_flags & MOBILITY_MOVE) && (has_gravity() || A.has_gravity()) && !jumping )
-
-		if(getStaminaLoss() > 60)
-			return
-		jumping = TRUE
-		weather_immunities += "lava"
-		pass_flags |= PASSMOB
-		pass_flags |= LETPASSTHROW
-		adjustStaminaLoss(30)
-		density = 0
-		throw_at(A, 2, 1, src, FALSE, TRUE, callback = CALLBACK(src, .proc/jump_end))
-		for(var/i in 1 to 5)
-			pixel_y = pixel_y+3
-			sleep(0.1)
-		weather_immunities -= "lava"
-		pass_flags &= ~PASSMOB
-		pass_flags &= ~LETPASSTHROW
-		density = 1
-		while(pixel_y > 0)
-			pixel_y = pixel_y-3
-			sleep(0.1)
-		pixel_y = 0
-		jumping = FALSE
-
-/mob/living/carbon/proc/jump_end()
-	jumping = FALSE
-	weather_immunities -= "lava"
-	pass_flags &= ~PASSMOB
-	pass_flags &= ~LETPASSTHROW
-	density = 1
-	while(pixel_y > 0)
-		pixel_y = pixel_y-3
-		sleep(0.1)
-	pixel_y = 0
-
+/mob/living/carbon/MiddleClickOn(atom/A)
+	pp_jump(A)
 
 
 
@@ -519,14 +477,10 @@
 
 /obj/screen/click_catcher/Click(location, control, params)
 	var/list/modifiers = params2list(params)
-	if(modifiers["middle"] && iscarbon(usr))
-		var/mob/living/carbon/C = usr
-		C.swap_hand()
-	else
-		var/turf/T = params2turf(modifiers["screen-loc"], get_turf(usr.client ? usr.client.eye : usr), usr.client)
-		params += "&catcher=1"
-		if(T)
-			T.Click(location, control, params)
+	var/turf/T = params2turf(modifiers["screen-loc"], get_turf(usr.client ? usr.client.eye : usr), usr.client)
+	params += "&catcher=1"
+	if(T)
+		T.Click(location, control, params)
 	. = 1
 
 /* MouseWheelOn */
