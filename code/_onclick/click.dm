@@ -313,7 +313,15 @@
 		for(var/i in 1 to 5)
 			pixel_y = pixel_y+3
 			sleep(0.1)
-
+		weather_immunities -= "lava"
+		pass_flags &= ~PASSMOB
+		pass_flags &= ~LETPASSTHROW
+		density = 1
+		while(pixel_y > 0)
+			pixel_y = pixel_y-3
+			sleep(0.1)
+		pixel_y = 0
+		jumping = FALSE
 
 /mob/living/carbon/proc/jump_end()
 	jumping = FALSE
