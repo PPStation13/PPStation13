@@ -55,6 +55,7 @@
 	var/creamed = FALSE //to use with creampie overlays
 	var/shidded = FALSE //Juicy PP Station exclusive ;)
 	var/curbstomping = FALSE
+
 	//var/canpee  = TRUE  //Why do I keep coming back to this cursed file
 	var/lastpee= -1000		//because no one wants to help me with the timer :feelsoldman:
 

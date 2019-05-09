@@ -531,7 +531,8 @@
 		pulledby.stop_pulling()
 
 	//They are moving! Wouldn't it be cool if we calculated their momentum and added it to the throw?
-	if (thrower && thrower.last_move && thrower.client && thrower.client.move_delay >= world.time + world.tick_lag*2)
+	//No it would not
+	/*if (thrower && thrower.last_move && thrower.client && thrower.client.move_delay >= world.time + world.tick_lag*2)
 		var/user_momentum = thrower.movement_delay()
 		if (!user_momentum) //no movement_delay, this means they move once per byond tick, lets calculate from that instead.
 			user_momentum = world.tick_lag
@@ -553,7 +554,7 @@
 			speed += user_momentum
 			if (speed <= 0)
 				return//no throw speed, the user was moving too fast.
-
+	*/
 	. = TRUE // No failure conditions past this point.
 
 	var/datum/thrownthing/TT = new()

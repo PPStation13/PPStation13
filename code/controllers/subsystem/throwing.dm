@@ -158,6 +158,8 @@ SUBSYSTEM_DEF(throwing)
 		var/atom/movable/AM = thing
 		if (AM == thrownthing)
 			continue
+		if(isliving(AM) && (thrownthing.pass_flags & PASSMOB))
+			return FALSE
 		if (AM.density && !(AM.pass_flags & LETPASSTHROW) && !(AM.flags_1 & ON_BORDER_1))
 			finalize(hit=TRUE, target=AM)
 			return TRUE
