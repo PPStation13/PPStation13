@@ -20,6 +20,9 @@
 		//PP WAS HERE: CURBSTOMPING!!!!
 		//WRITTEN BY WOROSS
 		//to use, you also have to add a curbstomping variable to the human defines
+		//Stop removing this notice, if you can't get good enough coders, at least credit those that you steal from!
+		//Looking at you, Bee Station!
+		//Okay, you can remove these last 3 comment lines if you port this.
 	if( !(D.mobility_flags & MOBILITY_STAND) && get_turf(A) == get_turf(D) && !A.curbstomping && A.zone_selected == BODY_ZONE_HEAD)
 		D.visible_message("<span class='warning'>[A] prepares to curbstomp [D]!</span>", "<span class='warning'>[A] prepares to curbstomp you!</span>")
 
@@ -42,9 +45,9 @@
 			A.pixel_y = A.pixel_y-5
 			A.pixel_x = A.pixel_x - increment
 			sleep(0.2)
-			
+
 		if(!(A.zone_selected == BODY_ZONE_HEAD &&!(D.mobility_flags & MOBILITY_STAND) && get_turf(A) == get_turf(D)))
-		
+
 			A.SetStun(0)
 			A.curbstomping = FALSE
 			for(var/i in 1 to 10) //Fix the curbstomper's offset
@@ -104,7 +107,7 @@
 
 /datum/martial_art/proc/basic_hit(mob/living/carbon/human/A,mob/living/carbon/human/D)
 
-	var/damage = rand(A.dna.species.punchdamagelow, A.dna.species.punchdamagehigh)
+	var/damage = A.dna.species.punchdamage * A.icon_size
 
 	var/atk_verb = A.dna.species.attack_verb
 	if(!(D.mobility_flags & MOBILITY_STAND))
@@ -139,13 +142,13 @@
 
 	log_combat(A, D, "punched")
 
-	if((D.stat != DEAD) && damage >= A.dna.species.punchstunthreshold)
+	/*if((D.stat != DEAD) && damage >= A.dna.species.punchstunthreshold)
 		D.visible_message("<span class='danger'>[A] has knocked [D] down!!</span>", \
 								"<span class='userdanger'>[A] has knocked [D] down!</span>")
 		D.apply_effect(40, EFFECT_KNOCKDOWN, armor_block)
 		D.forcesay(GLOB.hit_appends)
 	else if(!(D.mobility_flags & MOBILITY_STAND))
-		D.forcesay(GLOB.hit_appends)
+		D.forcesay(GLOB.hit_appends) Pathetic. Just pathetic. RNG punching. Disgusting.*/
 	return 1
 
 /datum/martial_art/proc/teach(mob/living/carbon/human/H,make_temporary=0)

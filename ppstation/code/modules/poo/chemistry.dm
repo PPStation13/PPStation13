@@ -125,3 +125,91 @@
 	mix_message = "The mixture starts bubbling. You are overwhelmed by an ungodly stench."
 	required_temp = 373
 
+//
+//STEROIDS - Included here because of the ghetto variant that requires poo poo!!!!
+//
+
+/datum/reagent/steroids
+	name = "Steroids"
+	id = "steroids"
+	description = "This potent chemical can finally turn you into a man."
+	color = "#804040" //A pleasant red color. Kind of a dim crimson color.
+	taste_description = "strength"
+	reagent_state = SOLID
+	overdose_threshold = 52
+	addiction_threshold = 52
+	var/i
+	var/max
+
+datum/reagent/steroids/ghetto
+	name ="Ghetto steroids"
+	id = "steroids_ghetto"
+	overdose_threshold = 35
+	color = "#120500" //Very dark brown.
+	reagent_state = LIQUID
+	description = "They say that what doesn't kill you, makes you stronger. This risky substance might just do both."
+
+/datum/reagent/steroids/on_mob_life(mob/living/carbon/H) //Inspired by growthserum code
+	switch(volume)
+		if(0 to 10)
+			i = 0
+			max = 1.25
+		if(10 to 49)
+			i = 0.01
+			max = 1.25
+		if(50 to 99)
+			i = 0.02
+			max = 1.75
+		if(100 to INFINITY)
+			i = 0.05
+			max = 2
+	if(H.icon_size < max)
+		H.resize += i
+		H.update_transform()
+	else
+		while (H.icon_size > max + 0.1)
+			H.resize -= 0.05
+			H.update_transform()
+			sleep(0.01)
+		H.resize = max / H.icon_size
+		H.update_transform()
+	..()
+
+/datum/reagent/steroids/on_mob_delete(mob/living/M)
+	M.say("*poop")
+	M.resize = 1/M.icon_size
+	M.update_transform()
+	..()
+
+/datum/reagent/steroids/overdose_process(mob/living/M)
+	M.adjustBrainLoss(2*REM)
+	M.adjustToxLoss(2*REM, 0)
+	M.Jitter(15)
+	if(prob(20))
+		M.say(pick("YEAH!!", "LET'S GO!!", "THAT'S RIGHT!!", "PISS OFF!!", "RUN!!", "COME HERE!!", "CUNT!!", "*flip", "*spin"))
+	..()
+	. = 1
+
+/datum/reagent/steroids/ghetto/overdose_process(mob/living/M)
+	M.adjustBrainLoss(2*REM)
+	M.adjustToxLoss(2*REM, 0)
+	if(prob(25))
+		M.emote(pick("scream","poop","pee","fart"))
+	..()
+	. = 1
+
+
+/datum/chemical_reaction/steroids
+	name = "Steroids"
+	id = "steroids"
+	results = list("steroids" = 3)
+	required_reagents = list("ammonia" = 3, "hydrogen" = 1, "potassium" = 1, "iron" = 1)
+	mix_message = "The mixture starts bubbling. Red crystals settle at the bottom of the container."
+
+/datum/chemical_reaction/steroids/ghetto
+
+	name = "Ghetto steroids"
+	id = "steroids_ghetto"
+	results = list("steroids_ghetto" = 2)
+	required_reagents = list("coffee" = 1, "poo" = 1)
+	mix_message = "The mixture starts bubbling. The resulting substance seems thick and smells horrible."

@@ -33,15 +33,17 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/list/mutant_organs = list()		//Internal organs that are unique to this race.
 	var/speedmod = 0	// this affects the race's speed. positive numbers make it move slower, negative numbers make it move faster
 	var/armor = 0		// overall defense for the race... or less defense, if it's negative.
-	var/brutemod = 1	// multiplier for brute damage
-	var/burnmod = 1		// multiplier for burn damage
+	var/brutemod = 2	// multiplier for brute damage
+	var/burnmod = 2		// multiplier for burn damage
 	var/coldmod = 1		// multiplier for cold damage
 	var/heatmod = 1		// multiplier for heat damage
 	var/stunmod = 1		// multiplier for stun duration
 	var/attack_type = BRUTE //Type of damage attack does
-	var/punchdamagelow = 0       //lowest possible punch damage
-	var/punchdamagehigh = 9      //highest possible punch damage
-	var/punchstunthreshold = 9//damage at which punches from this race will stun //yes it should be to the attacked race but it's not useful that way even if it's logical
+	//LOL NO RNG CRAP ALLOWED, /PPGANG/ WAS HERE
+	//var/punchdamagelow = 0       //lowest possible punch damage
+	//var/punchdamagehigh = 9      //highest possible punch damage
+	var/punchdamage = 5
+	//var/punchstunthreshold = 9//damage at which punches from this race will stun //yes it should be to the attacked race but it's not useful that way even if it's logical
 	var/siemens_coeff = 1 //base electrocution coefficient
 	var/damage_overlay_type = "human" //what kind of damage overlays (if any) appear on our species when wounded?
 	var/fixed_mut_color = "" //to use MUTCOLOR with a fixed color that's independent of dna.feature["mcolor"]
@@ -651,7 +653,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					S = GLOB.moth_wings_list[H.dna.features["moth_wings"]]
 				if("caps")
 					S = GLOB.caps_list[H.dna.features["caps"]]
-				else // hippie start -- our species mutant bodyparts such as ipc screen	
+				else // hippie start -- our species mutant bodyparts such as ipc screen
 					S = hippie_mutant_bodyparts(bodypart, H) // hippie end
 			if(!S || S.icon_state == "none")
 				continue
@@ -1148,7 +1150,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 /datum/species/proc/help(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 // hippie start -- martial arts check because this was never implemented. sorry not sorry
-	if(attacker_style && attacker_style.help_act(user,target))	
+	if(attacker_style && attacker_style.help_act(user,target))
 		return 1
 // hippie end
 	if(!((target.health < 0 || target.has_trait(TRAIT_FAKEDEATH)) && !(target.mobility_flags & MOBILITY_STAND)))
@@ -1206,7 +1208,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			else
 				user.do_attack_animation(target, ATTACK_EFFECT_PUNCH)
 
-		var/damage = rand(user.dna.species.punchdamagelow, user.dna.species.punchdamagehigh)
+		var/damage = user.dna.species.punchdamage * user.icon_size
 
 		var/obj/item/bodypart/affecting = target.get_bodypart(ran_zone(user.zone_selected))
 
@@ -1215,7 +1217,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			target.visible_message("<span class='danger'>[user] has attempted to [atk_verb] [target]!</span>",\
 			"<span class='userdanger'>[user] has attempted to [atk_verb] [target]!</span>", null, COMBAT_MESSAGE_RANGE)
 			return FALSE
-			
+
 		punchouttooth(target,user,affecting,rand(0,9)) // hippie -- teethcode
 
 		var/armor_block = target.run_armor_check(affecting, "melee")
@@ -1232,13 +1234,13 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			target.dismembering_strike(user, affecting.body_zone)
 		target.apply_damage(damage, attack_type, affecting, armor_block)
 		log_combat(user, target, "punched")
-		if((target.stat != DEAD) && damage >= user.dna.species.punchstunthreshold)
+		/*if((target.stat != DEAD) && damage >= user.dna.species.punchstunthreshold)
 			target.visible_message("<span class='danger'>[user] has knocked  [target] down!</span>", \
 							"<span class='userdanger'>[user] has knocked [target] down!</span>", null, COMBAT_MESSAGE_RANGE)
 			target.apply_effect(80, EFFECT_KNOCKDOWN, armor_block)
 			target.forcesay(GLOB.hit_appends)
 		else if(!(target.mobility_flags & MOBILITY_STAND))
-			target.forcesay(GLOB.hit_appends)
+			target.forcesay(GLOB.hit_appends)*/
 
 /datum/species/proc/disarm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	if(target.check_block())
@@ -1251,40 +1253,23 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 		if(target.w_uniform)
 			target.w_uniform.add_fingerprint(user)
-		var/randomized_zone = ran_zone(user.zone_selected)
+		//var/randomized_zone = ran_zone(user.zone_selected)
 		SEND_SIGNAL(target, COMSIG_HUMAN_DISARM_HIT, user, user.zone_selected)
-		var/obj/item/bodypart/affecting = target.get_bodypart(randomized_zone)
-		var/randn = rand(1, 100)
-		if(randn <= 25)
-			playsound(target, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-			target.visible_message("<span class='danger'>[user] has pushed [target]!</span>",
-				"<span class='userdanger'>[user] has pushed [target]!</span>", null, COMBAT_MESSAGE_RANGE)
-			target.apply_effect(40, EFFECT_PARALYZE, target.run_armor_check(affecting, "melee", "Your armor prevents your fall!", "Your armor softens your fall!"))
-			target.forcesay(GLOB.hit_appends)
-			log_combat(user, target, "pushed over")
-			return
-
-		if(randn <= 60)
-			var/obj/item/I = null
-			if(target.pulling)
-				target.visible_message("<span class='warning'>[user] has broken [target]'s grip on [target.pulling]!</span>")
-				target.stop_pulling()
+		//var/obj/item/bodypart/affecting = target.get_bodypart(randomized_zone)
+		var/obj/item/I = null
+		if(target.pulling)
+			target.visible_message("<span class='warning'>[user] has broken [target]'s grip on [target.pulling]!</span>")
+			target.stop_pulling()
+		else
+			I = target.get_active_held_item()
+			if(target.dropItemToGround(I))
+				target.visible_message("<span class='danger'>[user] has disarmed [target]!</span>", \
+					"<span class='userdanger'>[user] has disarmed [target]!</span>", null, COMBAT_MESSAGE_RANGE)
 			else
-				I = target.get_active_held_item()
-				if(target.dropItemToGround(I))
-					target.visible_message("<span class='danger'>[user] has disarmed [target]!</span>", \
-						"<span class='userdanger'>[user] has disarmed [target]!</span>", null, COMBAT_MESSAGE_RANGE)
-				else
-					I = null
-			playsound(target, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-			log_combat(user, target, "disarmed", "[I ? " removing \the [I]" : ""]")
-			return
-
-
-		playsound(target, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-		target.visible_message("<span class='danger'>[user] attempted to disarm [target]!</span>", \
-						"<span class='userdanger'>[user] attempted to disarm [target]!</span>", null, COMBAT_MESSAGE_RANGE)
-		log_combat(user, target, "attempted to disarm")
+				I = null
+		playsound(target, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
+		log_combat(user, target, "disarmed", "[I ? " removing \the [I]" : ""]")
+		return
 
 
 /datum/species/proc/spec_hitby(atom/movable/AM, mob/living/carbon/human/H)
@@ -1339,7 +1324,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/Iforce = I.force //to avoid runtimes on the forcesay checks at the bottom. Some items might delete themselves if you drop them. (stunning yourself, ninja swords)
 
 	var/weakness = H.check_weakness(I, user)
-	apply_damage(I.force * weakness, I.damtype, def_zone, armor_block, H)
+	apply_damage(I.force * weakness * H.icon_size, I.damtype, def_zone, armor_block, H)
 
 	H.send_item_attack_message(I, user, hit_area)
 
@@ -1352,12 +1337,12 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(affecting.dismember(I.damtype))
 			I.add_mob_blood(H)
 			playsound(get_turf(H), I.get_dismember_sound(), 80, 1)
-			
-	// hippie start -- If we're hit then throw off some hats	
-	if (prob(25))	
-		var/list/L = list()	
-		LAZYADD(L, get_dir(user, H))	
-		H.throw_hats(1 + rand(0, FLOOR(I.force / 5, 1)), L)	
+
+	// hippie start -- If we're hit then throw off some hats
+	if (prob(25))
+		var/list/L = list()
+		LAZYADD(L, get_dir(user, H))
+		H.throw_hats(1 + rand(0, FLOOR(I.force / 5, 1)), L)
 	// hippie end
 
 	var/bloody = 0

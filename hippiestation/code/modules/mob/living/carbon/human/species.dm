@@ -43,7 +43,7 @@
 			"<span class='userdanger'>[H] dodges the [I]!</span>", null, COMBAT_MESSAGE_RANGE)
 			return FALSE
 	var/weakness = H.check_weakness(I, user)
-	apply_damage(I.force * weakness, I.damtype, def_zone, armor_block, H)
+	apply_damage(I.force * weakness * user.icon_size, I.damtype, def_zone, armor_block, H)
 
 	H.send_item_attack_message(I, user, hit_area)
 
@@ -134,7 +134,7 @@
 		var/datum/martial_art/monk/M = target.mind.martial_art
 		var/defense_roll = M.defense_roll(0)
 		if(defense_roll)
-			var/damage = rand(user.dna.species.punchdamagelow, user.dna.species.punchdamagehigh)
+			var/damage = user.dna.species.punchdamage
 			playsound(target.loc, user.dna.species.attack_sound, 25, 1, -1)
 			if(defense_roll == 2)
 				damage *= 2
@@ -169,8 +169,7 @@
 			else
 				user.do_attack_animation(target, ATTACK_EFFECT_PUNCH)
 
-		var/damage = rand(user.dna.species.punchdamagelow, user.dna.species.punchdamagehigh)
-
+		var/damage = user.dna.species.punchdamage * user.icon_size
 		var/obj/item/bodypart/affecting = target.get_bodypart(ran_zone(user.zone_selected))
 
 		if(!damage || !affecting)
@@ -191,10 +190,10 @@
 			target.dismembering_strike(user, affecting.body_zone)
 		target.apply_damage(damage, BRUTE, affecting, armor_block)
 		log_combat(user, target, "punched")
-		if((target.stat != DEAD) && damage >= user.dna.species.punchstunthreshold)
+		/*if((target.stat != DEAD) && damage >= user.dna.species.punchstunthreshold)
 			target.visible_message("<span class='danger'>[user] has knocked  [target] down!</span>", \
 							"<span class='userdanger'>[user] has knocked [target] down!</span>", null, COMBAT_MESSAGE_RANGE)
 			target.apply_effect(80, EFFECT_KNOCKDOWN, armor_block)
 			target.forcesay(GLOB.hit_appends)
 		else if(target.lying)
-			target.forcesay(GLOB.hit_appends)
+			target.forcesay(GLOB.hit_appends) Mad? Mad? Mad????? */

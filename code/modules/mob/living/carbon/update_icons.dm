@@ -19,6 +19,7 @@
 	if(resize != RESIZE_DEFAULT_SIZE)
 		changed++
 		ntransform.Scale(resize)
+		icon_size *= resize
 		resize = RESIZE_DEFAULT_SIZE
 
 	if(changed)
@@ -166,7 +167,7 @@
 	if(head)
 		// hippie start -- Stackable hats
 		var/mutable_appearance/hm = head.build_worn_icon(state = head.icon_state, default_layer = HEAD_LAYER, default_icon_file = 'icons/mob/head.dmi')
-		
+
 		if (istype(head, /obj/item/clothing/head))
 			var/obj/item/clothing/head/H = head
 			if (LAZYLEN(H.stacked_hats) > 0)

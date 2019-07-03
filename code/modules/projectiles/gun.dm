@@ -153,7 +153,7 @@
 	if(suppressed)
 		playsound(user, suppressed_sound, suppressed_volume, vary_fire_sound)
 	else
-		playsound(user, fire_sound, fire_sound_volume, vary_fire_sound)
+		playsound(user, fire_sound, fire_sound_volume * 1.2, vary_fire_sound)
 		if(message)
 			if(pointblank)
 				user.visible_message("<span class='danger'>[user] fires [src] point blank at [pbtarget]!</span>", null, null, COMBAT_MESSAGE_RANGE)

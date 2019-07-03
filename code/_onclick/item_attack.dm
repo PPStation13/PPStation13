@@ -100,12 +100,12 @@
 		visible_message("<span class='danger'>[user] has hit [src] with [I]!</span>", null, null, COMBAT_MESSAGE_RANGE)
 		//only witnesses close by and the victim see a hit message.
 		log_combat(user, src, "attacked", I)
-	take_damage(I.force, I.damtype, "melee", 1)
+	take_damage(I.force * user.icon_size, I.damtype, "melee", 1)
 
 /mob/living/attacked_by(obj/item/I, mob/living/user)
 	send_item_attack_message(I, user)
 	if(I.force)
-		apply_damage(I.force, I.damtype)
+		apply_damage(I.force * user.icon_size, I.damtype)
 		if(I.damtype == BRUTE)
 			if(prob(33))
 				I.add_mob_blood(src)

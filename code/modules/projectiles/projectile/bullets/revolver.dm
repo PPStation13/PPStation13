@@ -2,19 +2,19 @@
 
 /obj/item/projectile/bullet/n762
 	name = "7.62x38mmR bullet"
-	damage = 60
+	damage = 45
 
 // .50AE (Desert Eagle)
 
 /obj/item/projectile/bullet/a50AE
 	name = ".50AE bullet"
-	damage = 60
+	damage = 45
 
 // .38 (Detective's Gun)
 
 /obj/item/projectile/bullet/c38
 	name = ".38 bullet"
-	damage = 25
+	damage = 20
 
 /obj/item/projectile/bullet/c38/trac
 	name = ".38 TRAC bullet"
@@ -57,4 +57,4 @@
 
 /obj/item/projectile/bullet/a357
 	name = ".357 bullet"
-	damage = 60
+	damage = 45

@@ -83,7 +83,7 @@
 
 /datum/martial_art/monk/basic_hit(mob/living/carbon/human/A,mob/living/carbon/human/D) // this is how you to it properly you fucks
 	var/defense_roll = defense_roll(0)
-	var/damage = rand(A.dna.species.punchdamagelow, A.dna.species.punchdamagehigh)
+	var/damage = A.dna.species.punchdamage
 	var/atk_verb = A.dna.species.attack_verb
 	if(D.lying)
 		atk_verb = "kick"

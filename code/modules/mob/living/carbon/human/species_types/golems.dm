@@ -9,9 +9,7 @@
 	speedmod = 2
 	armor = 55
 	siemens_coeff = 0
-	punchdamagelow = 5
-	punchdamagehigh = 14
-	punchstunthreshold = 11 //about 40% chance to stun
+	punchdamage = 10
 	no_equip = list(SLOT_WEAR_MASK, SLOT_WEAR_SUIT, SLOT_GLOVES, SLOT_SHOES, SLOT_W_UNIFORM, SLOT_S_STORE)
 	nojumpsuit = 1
 	sexes = 1
@@ -167,7 +165,7 @@
 	name = "Silver Golem"
 	id = "silver golem"
 	fixed_mut_color = "ddd"
-	punchstunthreshold = 9 //60% chance, from 40%
+	//punchstunthreshold = 9 //60% chance, from 40%
 	meat = /obj/item/stack/ore/silver
 	info_text = "As a <span class='danger'>Silver Golem</span>, your attacks have a higher chance of stunning. Being made of silver, your body is immune to most types of magic."
 	prefix = "Silver"
@@ -187,9 +185,8 @@
 	id = "plasteel golem"
 	fixed_mut_color = "bbb"
 	stunmod = 0.4
-	punchdamagelow = 12
-	punchdamagehigh = 21
-	punchstunthreshold = 18 //still 40% stun chance
+	punchdamage = 10
+	//punchstunthreshold = 18 //still 40% stun chance
 	speedmod = 4 //pretty fucking slow
 	meat = /obj/item/stack/ore/iron
 	info_text = "As a <span class='danger'>Plasteel Golem</span>, you are slower, but harder to stun, and hit very hard when punching."
@@ -498,9 +495,9 @@
 	id = "bananium golem"
 	fixed_mut_color = "ff0"
 	say_mod = "honks"
-	punchdamagelow = 0
-	punchdamagehigh = 1
-	punchstunthreshold = 2 //Harmless and can't stun
+	//punchdamagelow = 0
+	punchdamage = 1
+	//punchstunthreshold = 2 //Harmless and can't stun
 	meat = /obj/item/stack/ore/bananium
 	info_text = "As a <span class='danger'>Bananium Golem</span>, you are made for pranking. Your body emits natural honks, and you can barely even hurt people when punching them. Your skin also bleeds banana peels when damaged."
 	attack_verb = "honk"
@@ -690,9 +687,9 @@
 	armor = 15 //feels no pain, but not too resistant
 	burnmod = 2 // don't get burned
 	speedmod = 1 // not as heavy as stone
-	punchdamagelow = 4
-	punchstunthreshold = 7
-	punchdamagehigh = 8 // not as heavy as stone
+	//punchdamagelow = 4
+	punchdamage = 7
+	//punchdamagehigh = 8 // not as heavy as stone
 	prefix = "Cloth"
 	special_names = null
 

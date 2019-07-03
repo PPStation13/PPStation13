@@ -2,11 +2,11 @@
 
 /obj/item/projectile/bullet/c9mm
 	name = "9mm bullet"
-	damage = 20
+	damage = 18
 
 /obj/item/projectile/bullet/c9mm_ap
 	name = "9mm armor-piercing bullet"
-	damage = 15
+	damage = 13
 	armour_penetration = 40
 
 /obj/item/projectile/bullet/incendiary/c9mm
@@ -18,16 +18,16 @@
 
 /obj/item/projectile/bullet/c10mm
 	name = "10mm bullet"
-	damage = 30
+	damage = 22
 
 /obj/item/projectile/bullet/c10mm_ap
 	name = "10mm armor-piercing bullet"
-	damage = 27
+	damage = 18
 	armour_penetration = 40
 
 /obj/item/projectile/bullet/c10mm_hp
 	name = "10mm hollow-point bullet"
-	damage = 40
+	damage = 30
 	armour_penetration = -50
 
 /obj/item/projectile/bullet/incendiary/c10mm
