@@ -136,7 +136,8 @@
 	lefthand_file = 'ppstation/icons/poohand_left.dmi'
 	righthand_file = 'ppstation/icons/poohand_right.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
-	force = 10
+	force = 15
+	recoil = 1
 	slot_flags = ITEM_SLOT_BELT
 	fire_sound = 'sound/weapons/gunshot.ogg'
 	var/charge = 0
@@ -208,11 +209,15 @@
 
 /obj/item/projectile/poo/cannon/on_range()
 	new /obj/effect/gibspawner/poo(get_turf(src))
+	for(var/mob/M in urange(4, src))
+		shake_camera(M, 1, 1)
 	..()
 
 /obj/item/projectile/poo/cannon/on_hit(atom/target, blocked = FALSE)
 	..()
 	new /obj/effect/gibspawner/poo(get_turf(target))
+	for(var/mob/M in urange(4, target))
+		shake_camera(M, 1, 1)
 
 /obj/structure/disposalconstruct/attackby(obj/item/P, mob/user, params)
 	if(istype (P, /obj/item/weaponcrafting/receiver))
