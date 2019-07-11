@@ -4,7 +4,7 @@
 			if("P")
 				emote("pee")
 				return
-			if("O")
+			if("L")
 				emote("poo")
 				return
 	return ..()

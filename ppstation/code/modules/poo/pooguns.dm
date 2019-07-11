@@ -2,7 +2,9 @@
 //Beautiful sprites made by Old Man
 //Made with love for PP Station 13
 
+//
 //Poo Flintlock - the "Rump Raider"
+//
 
 /obj/item/gun/ballistic/poopistol
 	name = "poo pistol"
@@ -14,7 +16,7 @@
 	lefthand_file = 'ppstation/icons/poohand_left.dmi'
 	righthand_file = 'ppstation/icons/poohand_right.dmi'
 
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_SMALL
 	force = 10
 	slot_flags = ITEM_SLOT_BELT
 	fire_sound = 'sound/weapons/gunshot.ogg'
@@ -121,3 +123,100 @@
 				H.shidded = TRUE
 	new /obj/effect/decal/cleanable/poopsplash(get_turf(target))
 	qdel(src)
+
+//
+//Poo Cannon - The "Butt Blaster"
+//
+/obj/item/gun/ballistic/poocannon
+	name = "poo cannon"
+	desc = "A heavy handheld cannon, capable of shooting poo. Called the \"Butt Blaster\" by bandits, it is very popular with space outlaws for its sheer destructive force."
+	icon = 'ppstation/icons/butt_blaster.dmi'
+	icon_state = "butt_blaster_empty"
+	item_state = "butt_blaster"
+	lefthand_file = 'ppstation/icons/poohand_left.dmi'
+	righthand_file = 'ppstation/icons/poohand_right.dmi'
+	w_class = WEIGHT_CLASS_NORMAL
+	force = 10
+	slot_flags = ITEM_SLOT_BELT
+	fire_sound = 'sound/weapons/gunshot.ogg'
+	var/charge = 0
+	var/insert_sound = 'sound/weapons/bulletinsert.ogg'
+	weapon_weight = WEAPON_MEDIUM
+	spawnwithmagazine = FALSE
+	casing_ejector = FALSE
+
+/obj/item/gun/ballistic/poocannon/attackby(obj/item/A, mob/living/user, params)
+	if (charge < 3)
+		if (istype(A, /obj/item/reagent_containers/food/snacks/poo))
+			playsound(user, insert_sound, 50, 1)
+			to_chat(user, "<span class='notice'>You load the [src].</span>")
+			qdel(A)
+			charge = charge+1
+			if(charge == 3)
+				to_chat(user, "<span class='notice'>It is now ready to fire.</span>")
+				chambered = new /obj/item/ammo_casing/poo/cannon
+				icon_state = "butt_blaster_full"
+
+
+	else
+		to_chat(user, "<span class='warning'>The [src] is already fully loaded!<span>")
+	return
+
+/obj/item/gun/ballistic/poocannon/attack_self(mob/living/user)
+	if (!chambered)
+		return
+	else
+		to_chat(user, "<span class='warning'>You can't remove the poo stack once it's in!</span>")
+	return
+
+/obj/item/gun/ballistic/poocannon/process_chamber(empty_chamber = 0)
+	chambered = null
+	icon_state = "butt_blaster_empty"
+	charge = 0
+	return
+
+/obj/item/gun/ballistic/poocannon/chamber_round()
+	return
+
+/obj/item/gun/ballistic/poocannon/can_shoot()
+	if (charge != 3)
+		return
+	if (!chambered)
+		return
+	return (chambered.BB ? 1 : 0)
+
+/obj/item/ammo_casing/poo/cannon //just virtual
+	projectile_type = /obj/item/projectile/poo/cannon
+
+/obj/item/projectile/poo/cannon
+	icon = 'ppstation/icons/butt_blaster.dmi'
+	icon_state = "poojectile_cannon"
+	damage = 42
+	range = 8
+
+
+/obj/effect/gibspawner/poo
+	gibtypes = list(/obj/effect/decal/cleanable/poopsplash/stack, /obj/effect/decal/cleanable/poopdirt/stack, /obj/effect/decal/cleanable/poopsplash/stack)
+	gibamounts = list(3, 5, 1)
+	sound_vol = 10
+
+/obj/effect/gibspawner/poo/Initialize()
+	if(!gibdirections.len)
+		gibdirections = list(list(WEST, NORTHWEST, SOUTHWEST, NORTH),list(EAST, NORTHEAST, SOUTHEAST, SOUTH), list())
+	return ..()
+
+
+/obj/item/projectile/poo/cannon/on_range()
+	new /obj/effect/gibspawner/poo(get_turf(src))
+	..()
+
+/obj/item/projectile/poo/cannon/on_hit(atom/target, blocked = FALSE)
+	..()
+	new /obj/effect/gibspawner/poo(get_turf(target))
+
+/obj/structure/disposalconstruct/attackby(obj/item/P, mob/user, params)
+	if(istype (P, /obj/item/weaponcrafting/receiver))
+		to_chat(user, "<span class='notice'>You assemble a primitive cannon.</span>")
+		qdel(P)
+		qdel(src)
+		user.put_in_hands(new/obj/item/gun/ballistic/poocannon)

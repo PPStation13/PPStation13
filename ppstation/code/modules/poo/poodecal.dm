@@ -86,6 +86,9 @@
 	pixel_x = rand(-5, 5)
 	pixel_y = rand(-5, 5)
 
+/obj/effect/decal/cleanable/poopsplash/stack
+	mergeable_decal = FALSE
+
 //Residual poo dirt
 
 /obj/effect/decal/cleanable/poopdirt
@@ -101,6 +104,25 @@
 	reagents.add_reagent("poo", 5)
 	pixel_x = rand(-5, 5)
 	pixel_y = rand(-5, 5)
+
+/obj/effect/decal/cleanable/poopdirt/stack
+	mergeable_decal = FALSE
+
+/obj/effect/decal/cleanable/poopsplash/proc/streak(list/directions)
+	set waitfor = 0
+	var/direction = pick(directions)
+	for(var/i = 0, i < pick(1, 200; 2, 150; 3, 50), i++)
+		sleep(2)
+		if(!step_to(src, get_step(src, direction), 0))
+			break
+
+/obj/effect/decal/cleanable/poopdirt/proc/streak(list/directions)
+	set waitfor = 0
+	var/direction = pick(directions)
+	for(var/i = 0, i < pick(1, 200; 2, 150; 3, 50), i++)
+		sleep(2)
+		if(!step_to(src, get_step(src, direction), 0))
+			break
 //
 //welcome to the land of
 //PEE
