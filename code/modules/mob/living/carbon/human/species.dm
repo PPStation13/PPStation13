@@ -141,6 +141,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/obj/item/organ/liver/liver = C.getorganslot(ORGAN_SLOT_LIVER)
 	var/obj/item/organ/stomach/stomach = C.getorganslot(ORGAN_SLOT_STOMACH)
 	var/obj/item/organ/tail/tail = C.getorganslot(ORGAN_SLOT_TAIL)
+	var/obj/item/organ/foreskin/foreskin = C.getorganslot(ORGAN_SLOT_FORESKIN)
 
 	var/should_have_brain = TRUE
 	var/should_have_heart = !(NOBLOOD in species_traits)
@@ -152,6 +153,17 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/should_have_liver = !(NOLIVER in species_traits)
 	var/should_have_stomach = !(NOSTOMACH in species_traits)
 	var/should_have_tail = mutanttail
+	var/should_have_foreskin = FALSE
+
+	if(C.gender == MALE)
+		should_have_foreskin = TRUE
+
+	if(foreskin && (!should_have_foreskin || replace_current))
+		foreskin.Remove(C,1)
+		QDEL_NULL(foreskin)
+	if(should_have_foreskin && !foreskin)
+		foreskin = new()
+		foreskin.Insert(C)
 
 	if(heart && (!should_have_heart || replace_current))
 		heart.Remove(C,1)

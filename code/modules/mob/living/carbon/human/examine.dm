@@ -122,6 +122,9 @@
 	if(get_bodypart(BODY_ZONE_HEAD) && !getorgan(/obj/item/organ/brain))
 		msg += "<span class='deadsay'>It appears that [t_his] brain is missing...</span>\n"
 
+	if(!getorgan(/obj/item/organ/foreskin) && gender == "male" && !(w_uniform || wear_suit))
+		msg += "<span class='deadsay'>[t_He] appears to be circumcised...</span>\n"
+
 	var/temp = getBruteLoss() //no need to calculate each of these twice
 
 	msg += "<span class='warning'>"
@@ -281,7 +284,7 @@
 
 		if(digitalcamo)
 			msg += "[t_He] [t_is] moving [t_his] body in an unnatural and blatantly inhuman manner.\n"
-		
+
 	msg += hippie_carbon_examine() // hippie -- add our specific examine stuff
 
 	msg += common_trait_examine()

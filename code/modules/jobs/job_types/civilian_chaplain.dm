@@ -96,3 +96,5 @@ Chaplain
 	backpack_contents = list(/obj/item/camera/spooky = 1)
 	backpack = /obj/item/storage/backpack/cultpack
 	satchel = /obj/item/storage/backpack/cultpack
+
+/datum/job/rabbi //PP 13 GANG

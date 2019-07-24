@@ -42,6 +42,8 @@
 #define MIME			(1<<12)
 #define ASSISTANT		(1<<13)
 #define HOBO			(1<<14)
+#define RABBI			(1<<15)
+
 
 #define JOB_AVAILABLE 0
 #define JOB_UNAVAILABLE_GENERIC 1
@@ -51,4 +53,4 @@
 #define JOB_UNAVAILABLE_SLOTFULL 5
 
 #define DEFAULT_RELIGION "Christianity"
-#define DEFAULT_DEITY "Space Jesus"
+#define DEFAULT_DEITY "Jesus Christ"
