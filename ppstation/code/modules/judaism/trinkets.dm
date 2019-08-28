@@ -25,3 +25,13 @@ Made with love by woross
 		user.visible_message("[user] spins [src]. It lands on [states[roll]].", \
 		"<span class='notice'>You spin [src]. It lands on [states[roll]].</span>")
 		spinning  = 0
+
+/obj/item/candle/infinite/menorah
+	name = "menorah"
+	desc = "Oy vey!"
+	icon = 'ppstation/icons/jew.dmi'
+	icon_state = "menorah"
+	item_state = null
+
+/obj/item/candle/infinite/menorah/update_icon()
+	icon_state = "menorah[lit ? "_lit" : ""]"

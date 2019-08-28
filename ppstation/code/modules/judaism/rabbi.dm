@@ -25,7 +25,13 @@ CONTENTS:
 	icon_state = "poster_israel"
 
 /obj/item/clothing/neck/necklace/dope/rabbi
+	name = "star of David necklace"
 	desc = "Feels good to be rich."
+	icon = 'ppstation/icons/jew.dmi'
+	alternate_worn_icon = 'ppstation/icons/jew.dmi'
+	icon_state = "jew_bling_worn"
+	item_state = ""
+	item_color = "jew_bling_icon"
 
 /obj/item/clothing/suit/toggle/lawyer/black/rabbi
 	name = "rabbi suit"
@@ -85,6 +91,8 @@ CONTENTS:
 	suit = /obj/item/clothing/suit/toggle/lawyer/black/rabbi
 	head = /obj/item/clothing/head/pp/jhat
 	neck = /obj/item/clothing/neck/necklace/dope/rabbi
+	l_pocket = /obj/item/dreidel
+	r_pocket = /obj/item/switchblade
 
 /obj/item/book/manual/talmud
 	name = "The Talmud"

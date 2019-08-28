@@ -3394,6 +3394,7 @@
 #include "ppstation\code\modules\judaism\foreskin.dm"
 #include "ppstation\code\modules\judaism\rabbi.dm"
 #include "ppstation\code\modules\judaism\sacrifice.dm"
+#include "ppstation\code\modules\judaism\trinkets.dm"
 #include "ppstation\code\modules\jumping\jumping.dm"
 #include "ppstation\code\modules\poo\chemistry.dm"
 #include "ppstation\code\modules\poo\poo.dm"
