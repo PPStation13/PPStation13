@@ -18,6 +18,7 @@
 												// when the monkey is idle
 #define MONKEY_PULL_AGGRO_PROB 				5		// aggro against the mob pulling it
 #define MONKEY_SHENANIGAN_PROB 				5		// chance of getting into mischief, i.e. finding/stealing items
+#define MONKEY_POO_POO						2
 												// when the monkey is hunting
 #define MONKEY_ATTACK_DISARM_PROB 			50		// disarm an armed attacker
 #define MONKEY_WEAPON_PROB 					20		// if not currently getting an item, search for a weapon around it

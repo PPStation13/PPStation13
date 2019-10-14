@@ -10,7 +10,7 @@
 	layer = 2.09 //Sorry LIBERALS
 	turf_loc_check = FALSE
 	mergeable_decal = FALSE
-
+	var/item_flags = NONE //fucking FUCK, SHIT, FUCK, FUUUCK HOLY SHIT I'M SORRY
 	var/poopitem = /obj/item/reagent_containers/food/snacks/poo
 
 /obj/effect/decal/cleanable/poopdecal/pellets
@@ -32,17 +32,17 @@
 	icon_state = "ClownTurd"
 	poopitem = /obj/item/reagent_containers/food/snacks/poo/clown
 
-/obj/effect/decal/cleanable/poopdecal/proc/on_slip(mob/living/carbon/human/H)
+/obj/effect/decal/cleanable/poopdecal/proc/on_slip(mob/living/carbon/C)
 	//c&p from poo.dm
 	new/obj/effect/decal/cleanable/poopsplash(src.loc)
 	var/mutable_appearance/shiddoverlay = mutable_appearance('ppstation/icons/poo.dmi')
 	shiddoverlay.icon_state = "Shitoverlay"
-	playsound(H, "desceration", 50, TRUE)
-	if(!H.shidded) // one layer at a time
-		H.add_overlay(shiddoverlay)
-		H.shidded = TRUE
-		//TODO: handle it in moods
-		//SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "creampie", /datum/mood_event/creampie)
+	playsound(C, "desceration", 50, TRUE)
+	if(ishuman(C))
+		var/mob/living/carbon/human/H = C
+		if(!H.shidded) // one layer at a time
+			H.add_overlay(shiddoverlay)
+			H.shidded = TRUE
 	qdel(src)
 
 /obj/effect/decal/cleanable/poopdecal/Initialize()
@@ -64,9 +64,7 @@
 
 	var/obj/item/reagent_containers/food/snacks/poo/newpoo = new poopitem(user.loc)
 	user.put_in_hands(newpoo)
-
 	new/obj/effect/decal/cleanable/poopdirt(src.loc)
-
 	qdel(src)
 
 

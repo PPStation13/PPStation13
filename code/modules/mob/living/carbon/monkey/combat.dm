@@ -146,15 +146,26 @@
 				if(Adjacent(pickupTarget) || Adjacent(pickupTarget.loc)) // next to target
 					drop_all_held_items() // who cares about these items, i want that one!
 					if(isturf(pickupTarget.loc)) // on floor
-						equip_item(pickupTarget)
-						pickupTarget = null
-						pickupTimer = 0
+						if(istype(pickupTarget, /obj/effect/decal/cleanable/poopdecal))
+							var/obj/effect/decal/cleanable/poopdecal/targetpoo = pickupTarget
+							var/obj/item/reagent_containers/food/snacks/poo/newpoo = new targetpoo.poopitem(src.loc)
+							equip_item(newpoo)
+							best_force = 10
+							new/obj/effect/decal/cleanable/poopdirt(pickupTarget.loc)
+							qdel(pickupTarget)
+							pickupTarget = null
+							pickupTimer = 0
+						else
+							equip_item(pickupTarget)
+							pickupTarget = null
+							pickupTimer = 0
 					else if(ismob(pickupTarget.loc)) // in someones hand
 						var/mob/M = pickupTarget.loc
 						if(!pickpocketing)
 							pickpocketing = TRUE
 							M.visible_message("[src] starts trying to take [pickupTarget] from [M]", "[src] tries to take [pickupTarget]!")
 							INVOKE_ASYNC(src, .proc/pickpocket, M)
+
 			return TRUE
 
 	switch(mode)
@@ -175,14 +186,18 @@
 								return TRUE
 
 			// pickup any nearby objects
-			if(!pickupTarget)
+			if(!pickupTarget && !(/obj/item/reagent_containers/food/snacks/poo in held_items))
 				var/obj/item/I = locate(/obj/item/) in oview(2,src)
 				if(I && !blacklistItems[I])
 					pickupTarget = I
 				else
-					var/mob/living/carbon/human/H = locate(/mob/living/carbon/human/) in oview(2,src)
-					if(H)
-						pickupTarget = pick(H.held_items)
+					var/obj/effect/decal/cleanable/poopdecal/poo = locate(/obj/effect/decal/cleanable/poopdecal) in view(2,src)
+					if(poo)
+						pickupTarget = poo
+					else
+						var/mob/living/carbon/human/H = locate(/mob/living/carbon/human/) in oview(2,src)
+						if(H)
+							pickupTarget = pick(H.held_items)
 
 		if(MONKEY_HUNT)		// hunting for attacker
 			if(health < MONKEY_FLEE_HEALTH)
@@ -193,7 +208,7 @@
 				INVOKE_ASYNC(src, .proc/walk2derpless, target)
 
 			// pickup any nearby weapon
-			if(!pickupTarget && prob(MONKEY_WEAPON_PROB))
+			if(!pickupTarget && prob(MONKEY_WEAPON_PROB) && !(/obj/item/reagent_containers/food/snacks/poo in held_items))
 				var/obj/item/W = locate(/obj/item/) in oview(2,src)
 				if(!locate(/obj/item) in held_items)
 					best_force = 0
@@ -220,6 +235,14 @@
 				return TRUE
 
 			if(target && target.stat == CONSCIOUS)		// make sure target exists
+
+				var/obj/item/P = locate(/obj/item) in held_items /* MODIFICATION MADE BY WOROSS FOR PP STATION 13, FUCK ANIME */
+
+				if(istype(P, /obj/item/reagent_containers/food/snacks/poo))
+					P.forceMove(loc)
+					P.throw_at(target, 8, 3)
+					return TRUE
+
 				if(Adjacent(target) && isturf(target.loc) && !IsDeadOrIncap())	// if right next to perp
 
 					// check if target has a weapon

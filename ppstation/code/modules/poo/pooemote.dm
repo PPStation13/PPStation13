@@ -1,4 +1,4 @@
-//made by woross with the help of Tomeno
+ //made by woross with the help of Tomeno
 
 /datum/emote/living/carbon/human/poop
 	key = "poop"
@@ -15,9 +15,10 @@
 	message = "poops."
 	var/shiddsound = 'ppstation/sound/shidd.ogg'
 
-	if(user.stat != CONSCIOUS)
-		to_chat(user, "<span class='warning'>You can't poop while unconscious!</span>")
-		return
+	//if(user.stat != CONSCIOUS)
+	//	to_chat(user, "<span class='warning'>You can't poop while unconscious!</span>")
+	//	return
+	//BRING BACK UNCONSCIOUS POOPING
 
 	if(user.nutrition < NUTRITION_LEVEL_STARVING)
 		to_chat(user, "<span class='warning'>You're too hungry to poop!</span>")
@@ -162,14 +163,6 @@
 	key = "pee"
 	key_third_person = "pees"
 
-//mob/living/proc/ResetPee(var/mob/living/carbon/human/user)
-//I have literally no idea how procs works so I will hack this into oblivion
-//	to_chat(user, "<span class='notice'>You feel like you may pee again.</span>")
-//	user.canpee = TRUE
-//nebo neco takovyho
-//to je ale hujerovina
-
-
 /datum/emote/living/carbon/human/pee/run_emote(mob/living/carbon/human/user, params)
 
 	message = "pees."
@@ -228,8 +221,86 @@
 							"empties the tank.",
 							"sprinkles the tinkle.",
 							"takes a leak.")
-		//addtimer(CALLBACK(src, /mob/living/proc/ResetPee(user)), 2 SECONDS)
 		new/obj/effect/decal/cleanable/peepuddle(user.loc)
 		playsound(user, peesound, 85, 1, 5)
 		user.visible_message("<b>[user]</b> [message]")
 		return
+
+/* MONKEY SECTION - Much simplified poo poo */
+
+/datum/emote/living/carbon/monkey
+	mob_type_allowed_typecache = list(/mob/living/carbon/monkey)
+
+/mob/living/carbon/monkey
+	var/lastpoo = -1000
+
+/datum/emote/living/carbon/monkey/poop
+	key = "monkey_poop"
+	key_third_person = "monkey_poops"
+
+/datum/emote/living/carbon/monkey/poop/poo
+	key = "monkey_poo"
+
+/datum/emote/living/carbon/monkey/poop/run_emote(mob/living/carbon/monkey/user, params)
+
+	var/mutable_appearance/shiddoverlay = mutable_appearance('ppstation/icons/poo.dmi')
+	shiddoverlay.icon_state = "Shitoverlay"
+
+	message = "poops."
+	var/shiddsound = 'ppstation/sound/shidd.ogg'
+
+	//if(user.canpee == FALSE)
+	if(user.lastpoo > world.time - 1000)
+		to_chat(user, "<span class='warning'>You don't want to!</span>")
+		return
+
+	else
+		user.lastpoo = world.time
+
+		for(var/obj/structure/toilet/M in get_turf(user))
+			if(M.open == TRUE)
+				to_chat(user, "<span class='notice'>You take a peaceful dump into the toilet.</span>")
+				playsound(user, shiddsound, 30, 1, 5)
+				return
+
+		for(var/obj/item/reagent_containers/glass/bucket/N in get_turf(user))
+			if(!(N.reagents.total_volume >= N.reagents.maximum_volume))
+				N.reagents.add_reagent("poo", 20)
+				to_chat(user, "<span class='notice'>You take a peaceful dump into the bucket.</span>")
+				playsound(user, shiddsound, 30, 1, 5)
+				return
+
+		for(var/mob/living/M in get_turf(user))
+			if(M == user)
+				continue
+			else
+				M.apply_damage(10,"brute","chest")
+				user.log_message("pooped on [key_name(M)]", LOG_ATTACK)
+				user.visible_message("<span class='warning'><b>[user]</b> poops on <b>[M]</b>!</span>", "<span class='warning'>You poop on <b>[M]</b>!</span>")
+
+				if(ishuman(M))
+					var/mob/living/carbon/human/H = M
+					if(!H.shidded) // one layer at a time
+						H.add_overlay(shiddoverlay)
+						H.shidded = TRUE
+
+		message = pick(	"fards and shids.",
+						"makes a poo poo!",
+						"fires the rear guns.",
+						"composts.",
+						"fertrilizes the station!",
+						"opens the cargo hold.",
+						"carpet bombs.",
+						"bombs the floor.",
+						"plants some corn.",
+						"releases the barbarians at the gate.",
+						"builds a dookie castle!",
+						"downloads some brownware.",
+						"draws mud.",
+						"makes room for lunch.",
+						"voids the bowels.",
+						"releases a boulder.")
+
+		new/obj/effect/decal/cleanable/poopdecal/pellets(user.loc)
+		playsound(user, shiddsound, 50, 1, 5)
+		user.visible_message("<b>[user]</b> [message]")

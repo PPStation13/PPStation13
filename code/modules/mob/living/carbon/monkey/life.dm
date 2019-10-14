@@ -25,6 +25,8 @@
 						step(src, pick(GLOB.cardinals))
 					else if(prob(1))
 						emote(pick("scratch","jump","roll","tail"))
+					else if(prob(1))
+						emote("monkey_poo")
 			else
 				walk_to(src,0)
 
