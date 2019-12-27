@@ -62,7 +62,8 @@
 		//Bathrooms. Blood, vomit, and shavings in the sinks.
 	var/static/list/bathroom_dirt_areas = typecacheof(list(	/area/crew_quarters/toilet,
 															/area/hallway/secondary/entry,
-															/area/awaymission/research/interior/bathroom))
+															/area/awaymission/research/interior/bathroom,
+															/area/sewers))
 	if(is_type_in_typecache(A, bathroom_dirt_areas))
 		if(prob(40))
 			if(prob(70))

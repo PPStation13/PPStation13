@@ -1,21 +1,26 @@
-/mob/living/carbon/proc/pp_jump(atom/A) //AKA BLOODY JUMP
+/mob/living/carbon/proc/pp_jump(atom/A, stamcost = TRUE) //AKA BLOODY JUMP
 
 	face_atom(A)
 	if( (mobility_flags & (MOBILITY_MOVE)) && (mobility_flags & (MOBILITY_STAND)) && (has_gravity() || A.has_gravity()) && !jumping && (!handcuffed || !pulledby) /*stay De Morganmad liberals*/ && !legcuffed )
 
-		if(getStaminaLoss() > 60)
+		if(getStaminaLoss() > 60 && stamcost)
 			return
 		jumping = TRUE
 		weather_immunities += "lava"
 		pass_flags |= PASSMOB
 		pass_flags |= LETPASSTHROW
-		adjustStaminaLoss(20)
+		if(stamcost)
+			adjustStaminaLoss(20)
 		density = 0
 		throw_at(A, 2, 1, src, FALSE, TRUE, callback = CALLBACK(src, .proc/jump_end))
 		for(var/i in 1 to 5)
 			pixel_y = pixel_y+3
 			sleep(0.1)
-		jump_end()
+		spawn() jump_end()
+		if(A.loc == loc) //check if we arrived at our destination
+			return 1
+		else
+			return 0
 
 /mob/living/carbon/proc/jump_end()
 	weather_immunities -= "lava"

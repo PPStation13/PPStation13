@@ -339,8 +339,9 @@
 	item_state = "lantern"
 	lefthand_file = 'icons/mob/inhands/equipment/mining_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/mining_righthand.dmi'
+	light_color = LIGHT_COLOR_ORANGE
 	desc = "A mining lantern."
-	brightness_on = 6			// luminosity when on
+	brightness_on = 7			// luminosity when on
 
 /obj/item/flashlight/lantern/heirloom_moth
 	name = "old lantern"

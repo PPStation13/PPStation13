@@ -9,6 +9,9 @@
 	var/cistern = 0			//if the cistern bit is open
 	var/w_items = 0			//the combined w_class of all the items in the cistern
 	var/mob/living/swirlie = null	//the mob being given a swirlie
+	var/code = 0 //pp13 content, for mapping purposes, I can't believe toilets need to have a code now
+	var/canopen = 0
+	var/obj/effect/landmark/sewer/linked_sewer = null
 
 
 /obj/structure/toilet/Initialize()
@@ -16,6 +19,115 @@
 	open = round(rand(0, 1))
 	update_icon()
 
+/* PP Station 13 good stuff, Mark Renton would be proud, ay? */
+/var/list/sewers_entrance = list()
+/var/list/sewers_exit = list()
+/obj/effect/landmark/sewer
+	var/code = 0
+/obj/effect/landmark/sewer/Initialize()
+	. = ..()
+	sewers_entrance.Add(src)
+
+/obj/structure/manhole
+	name = "manhole"
+	desc = "A very heavy manhole leading to the sewers that can only be opened from the inside."
+	icon = 'ppstation/icons/manhole.dmi'
+	icon_state = "manhole_closed"
+	anchored = TRUE
+	layer = 2
+	resistance_flags = LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	var/code
+/obj/structure/manhole/Initialize()
+	. = ..()
+	sewers_exit.Add(src)
+
+/obj/structure/ladder_sewers
+	name = "ladder"
+	desc = "A ladder leading up to a manhole cover."
+	icon = 'icons/obj/structures.dmi'
+	icon_state = "ladder10"
+	var/code
+	anchored = TRUE
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+
+
+/obj/structure/ladder_sewers/attack_hand(mob/living/carbon/human/user)
+	var/obj/structure/manhole/linked_manhole = null
+	for(var/obj/structure/manhole/M in sewers_exit)
+		if(M.code == code)
+			linked_manhole = M
+			break
+	if(!linked_manhole)
+		user.visible_message("<span class='notice'>The [src] doesn't lead anywhere!</span>")
+	else
+		user.visible_message("<span class='notice'>[user] starts climbing the [src].</span>", "<span class='notice'>You start climbing the [src].</span>")
+		playsound(linked_manhole.loc, 'sound/effects/stonedoor_openclose.ogg', 55, 1, -1)
+		linked_manhole.icon_state = "manhole_open"
+		if((!do_mob(user, user, 30) || !linked_manhole))
+			user.visible_message("<span class='notice'>[user] has stopped climbing the [src].</span>", "<span class='notice'>You stop climbing the [src].</span>")
+			linked_manhole.icon_state = "manhole_closed"
+			return
+		else
+			user.Stun(100000)
+			var/a = user.alpha
+			user.alpha = 0
+			sleep(5)
+			if(linked_manhole)
+				user.loc = linked_manhole.loc
+			sleep(5)
+			user.alpha = a
+			user.SetStun(0)
+			sleep(2)
+			linked_manhole.icon_state = "manhole_closed"
+
+/obj/structure/toilet/MouseDrop_T(mob/living/target, mob/living/user)
+	if(istype(target) && open && target == user && ishuman(user))
+		var/mob/living/carbon/human/H = target
+		flush(H)
+
+/obj/structure/toilet/proc/flush(mob/living/carbon/human/user)
+
+	for(var/obj/effect/landmark/sewer/T in sewers_entrance)
+		if(T.code == code)
+			linked_sewer = T
+			break
+	if(!linked_sewer)
+		user.visible_message("<span class='notice'>The [src] doesn't lead anywhere!</span>")
+		//message_admins("[key_name(usr)] attempted to jump into an unlinked toilet.")
+	else
+		user.visible_message("<span class='warning'>[user] prepares to jump into the [src]!</span>", "<span class='warning'>You prepare to jump into the [src]!</span>")
+		user.toiletdiving = TRUE
+		if((!do_mob(user, user, 30) || !open))
+			user.visible_message("<span class='notice'>[user] has stepped back from the [src].</span>", "<span class='notice'>You step back from the [src].</span>")
+			user.toiletdiving = FALSE
+			return
+		user.Stun(100000)
+		user.throw_at(src, 2, 1, src, FALSE, TRUE)
+		for(var/i in 1 to 5)
+			user.pixel_y = user.pixel_y+3
+			sleep(0.1)
+		for(var/i in 1 to 5)
+			user.pixel_y = user.pixel_y-3
+			user.resize -= 0.15
+			user.update_transform()
+			sleep(0.1)
+		user.pixel_y=0
+		var/a = user.alpha
+		user.alpha = 0
+		sleep(5)
+		user.loc = linked_sewer.loc
+		sleep(5)
+		user.resize = 1/user.icon_size
+		user.update_transform()
+		user.alpha = a
+		user.toiletdiving = FALSE
+		user.visible_message("<span class='warning'>Welcome to the sewers. <b>Grief protection does not apply here.</b></span>")
+		user.SetStun(0)
+		user.Paralyze(20)
+		return
+
+
+/* End of PP Station 13 content. Fun haters can delete. */
 
 /obj/structure/toilet/attack_hand(mob/living/user)
 	. = ..()
@@ -65,7 +177,7 @@
 				I.forceMove(drop_location())
 			to_chat(user, "<span class='notice'>You find [I] in the cistern.</span>")
 			w_items -= I.w_class
-	else
+	else if(world.time > canopen)
 		open = !open
 		update_icon()
 
