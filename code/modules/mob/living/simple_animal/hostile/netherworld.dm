@@ -4,6 +4,7 @@
 	icon_state = "otherthing"
 	icon_living = "otherthing"
 	icon_dead = "otherthing-dead"
+	weather_immunities = "lava"
 	health = 80
 	maxHealth = 80
 	obj_damage = 100
