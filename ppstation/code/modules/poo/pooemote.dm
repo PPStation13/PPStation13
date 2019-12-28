@@ -43,9 +43,38 @@
 
 		for(var/obj/structure/toilet/M in get_turf(user))
 			if(M.open == TRUE)
-				user.nutrition = user.nutrition - 75
 				to_chat(user, "<span class='notice'>You take a peaceful dump into the toilet.</span>")
 				playsound(user, shiddsound, 30, 1, 5)
+                //I can't believe I'm editing this ancient file, the file that started the spirit of PP Station 13...
+                //Such nostalgia.
+
+                //Pooping into a toilet now shits on the other end of the toilet.
+                //Eventually I am gonna animate it for the other side, maybe make it splat against the heads of people hit by it.
+				var/obj/effect/landmark/sewer/linked_sewer = null
+				for(var/obj/effect/landmark/sewer/T in sewers_entrance)
+					if(T.code == M.code)
+						linked_sewer = T
+						break
+				if(linked_sewer)
+                    //Wow my code a few months ago was utter shit, I should've handled it with variables. Now I'm gonna have to do a trillion ifs, sad
+					if(user.mind.assigned_role == "Clown")
+                        //Special clown poop
+						user.nutrition = user.nutrition - 75
+						new/obj/effect/decal/cleanable/poopdecal/clown(linked_sewer.loc)
+						return
+
+					var/obj/item/organ/butt/B = user.getorgan(/obj/item/organ/butt)
+					if(!B)
+						user.nutrition = user.nutrition - 30
+						new/obj/effect/decal/cleanable/poopdecal/liquid(linked_sewer.loc)
+					else
+						if(user.nutrition > 300)
+							user.nutrition = user.nutrition - 75
+							new/obj/effect/decal/cleanable/poopdecal(linked_sewer.loc)
+
+						else
+							user.nutrition = user.nutrition - 50
+							new/obj/effect/decal/cleanable/poopdecal/pellets(linked_sewer.loc)
 				return
 
 		for(var/obj/item/reagent_containers/glass/bucket/N in get_turf(user))

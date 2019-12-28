@@ -5,7 +5,6 @@
 	requires_power = FALSE
 	has_gravity = STANDARD_GRAVITY
 	noteleport = TRUE
-	flags_1 = NONE
 
 /turf/open/indestructible/dirt
 	name = "dirt"
@@ -30,6 +29,7 @@
 	slowdown = 1
 	bullet_sizzle = TRUE
 	bullet_bounce_sound = null //needs a splashing sound one day.
+	flags_1 = NONE
 	footstep = FOOTSTEP_WATER
 	barefootstep = FOOTSTEP_WATER
 	clawfootstep = FOOTSTEP_WATER

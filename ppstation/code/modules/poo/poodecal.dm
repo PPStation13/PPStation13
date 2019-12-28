@@ -7,11 +7,20 @@
 	desc = "A mighty log."
 	icon = 'ppstation/icons/poo.dmi'
 	icon_state = "Logs"
-	layer = 2.09 //Sorry LIBERALS
+	//layer = 2.09 //Sorry LIBERALS
+	layer = 2.65 //Sorry LIBERALS
+	plane = GAME_PLANE
 	turf_loc_check = FALSE
 	mergeable_decal = FALSE
 	var/item_flags = NONE //fucking FUCK, SHIT, FUCK, FUUUCK HOLY SHIT I'M SORRY
 	var/poopitem = /obj/item/reagent_containers/food/snacks/poo
+
+/obj/effect/decal/cleanable/poopdecal/ConveyorMove(movedir)
+	set waitfor = FALSE
+	if(has_gravity())
+		anchored = FALSE
+		step(src, movedir)
+		anchored = TRUE
 
 /obj/effect/decal/cleanable/poopdecal/pellets
 

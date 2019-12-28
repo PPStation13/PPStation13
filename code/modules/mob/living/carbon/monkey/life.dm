@@ -13,6 +13,8 @@
 
 		if(!client)
 			if(stat == CONSCIOUS)
+				if(prob(1))
+					emote("monkey_poo")
 				if(on_fire || buckled || restrained())
 					if(!resisting && prob(MONKEY_RESIST_PROB))
 						resisting = TRUE
@@ -25,8 +27,6 @@
 						step(src, pick(GLOB.cardinals))
 					else if(prob(1))
 						emote(pick("scratch","jump","roll","tail"))
-					else if(prob(1))
-						emote("monkey_poo")
 			else
 				walk_to(src,0)
 

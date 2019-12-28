@@ -6,6 +6,7 @@
 		if(getStaminaLoss() > 60 && stamcost)
 			return
 		jumping = TRUE
+		movement_type &= FLYING
 		weather_immunities += "lava"
 		pass_flags |= PASSMOB
 		pass_flags |= LETPASSTHROW
@@ -32,6 +33,7 @@
 		sleep(0.1)
 	pixel_y = 0
 	jumping = FALSE
+	movement_type &= !FLYING
 
 /obj/structure/table/Crossed(atom/movable/AM)
 	if(iscarbon(AM))

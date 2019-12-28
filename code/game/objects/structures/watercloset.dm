@@ -115,6 +115,12 @@
 		var/a = user.alpha
 		user.alpha = 0
 		sleep(5)
+        //Cover the dude in poo like nothing matters
+		if(!user.shidded) // one layer at a time
+			var/mutable_appearance/shiddoverlay = mutable_appearance('ppstation/icons/poo.dmi')
+			shiddoverlay.icon_state = "Shitoverlay"
+			user.add_overlay(shiddoverlay)
+			user.shidded = TRUE
 		user.loc = linked_sewer.loc
 		sleep(5)
 		user.resize = 1/user.icon_size
