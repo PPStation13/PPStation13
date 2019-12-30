@@ -49,6 +49,11 @@
 	. = ..()
 	RegisterSignal(src, COMSIG_ATOM_CANREACH, canreach_blocking_callback)
 
+/obj/item/bodybag/bluespace/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/stationloving)
+
+
 /proc/__bluespace_bodybag_canreach_block()
 	return COMPONENT_BLOCK_REACH
 

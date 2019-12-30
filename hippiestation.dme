@@ -3397,6 +3397,7 @@
 #include "ppstation\code\modules\judaism\trinkets.dm"
 #include "ppstation\code\modules\jumping\jumping.dm"
 #include "ppstation\code\modules\poo\chemistry.dm"
+#include "ppstation\code\modules\poo\explosives.dm"
 #include "ppstation\code\modules\poo\poo.dm"
 #include "ppstation\code\modules\poo\poodecal.dm"
 #include "ppstation\code\modules\poo\pooemote.dm"
