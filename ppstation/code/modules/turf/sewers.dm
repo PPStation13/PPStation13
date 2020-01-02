@@ -36,12 +36,13 @@
 	heavyfootstep = FOOTSTEP_WATER
 
 /turf/open/sewer_water/Entered(atom/movable/AM)
-	if(isliving(AM))
-		var/mob/living/live = AM
+	if(isliving(AM) && iscarbon(AM))
+		var/mob/living/carbon/live = AM
 		if(!("lava" in live.weather_immunities))
 			live.acid_act(15, 15)
 			live.apply_damage(10, BURN)
 			live.say("*scream")
+
 	else
 		AM.acid_act(15, 15)
 
