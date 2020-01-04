@@ -3118,7 +3118,7 @@
 "bhX" = (/obj/machinery/conveyor/inverted{dir = 9; icon_state = "conveyor_map_inverted"; id = "grinder"},/turf/open/floor/plasteel/dark,/area/security/execution/transfer)
 "bhY" = (/obj/machinery/conveyor{dir = 4; id = "grinder"},/obj/machinery/recycler/deathtrap,/turf/open/floor/plasteel/dark,/area/security/execution/transfer)
 "bhZ" = (/obj/machinery/conveyor{dir = 9; icon_state = "conveyor_map"; id = "switch"},/turf/open/floor/plasteel/dark,/area/security/execution/transfer)
-"bia" = (/obj/machinery/conveyor{dir = 9; icon_state = "conveyor_map"; id = "gas"},/turf/open/floor/plasteel/dark,/area/security/execution/transfer)
+"bia" = (/obj/machinery/conveyor/inverted{dir = 4; icon_state = "conveyor_map_inverted"; id = "switch"},/turf/open/floor/plasteel/dark,/area/security/execution/transfer)
 "bib" = (/obj/machinery/conveyor{dir = 8; id = "gas"},/obj/structure/plasticflaps,/turf/open/floor/plasteel/dark,/area/security/execution/transfer)
 "bic" = (/obj/machinery/conveyor/inverted{dir = 8; icon_state = "conveyor_map_inverted"; id = "gas"},/turf/open/floor/engine/n2,/area/security/execution/transfer)
 "bid" = (/obj/machinery/light,/obj/machinery/conveyor{dir = 8; id = "gas"},/turf/open/floor/plasteel/dark,/area/security/execution/transfer)
