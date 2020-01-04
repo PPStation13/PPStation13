@@ -71,10 +71,17 @@
 	return TRUE //diseases, stings, etc can pass
 
 /obj/structure/plasticflaps/CanPass(atom/movable/A, turf/T)
+
+	if(istype(A, /mob/living/carbon/monkey/angry/poopy))
+		return FALSE
+
 	if(istype(A) && (A.pass_flags & PASSGLASS))
 		return prob(60)
 
 	var/obj/structure/bed/B = A
+	if(istype(A, /obj/structure/bed/death)) //PP Edit, death beds can pass through flaps for easy execution purposes
+		return TRUE
+
 	if(istype(A, /obj/structure/bed) && (B.has_buckled_mobs() || B.density))//if it's a bed/chair and is dense or someone is buckled, it will not pass
 		return FALSE
 

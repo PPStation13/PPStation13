@@ -20,6 +20,8 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 	var/verted = 1		// Inverts the direction the conveyor belt moves.
 	speed_process = TRUE
 
+	resistance_flags = FIRE_PROOF | UNACIDABLE | ACID_PROOF
+
 /obj/machinery/conveyor/centcom_auto
 	id = "round_end_belt"
 

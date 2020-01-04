@@ -170,6 +170,10 @@
 /mob/living/carbon/monkey/angry
 	aggressive = TRUE
 
+/mob/living/carbon/monkey/angry/poopy
+	name = "Poopy"
+	desc = "A terrifying monkey that likes to scratch and poop."
+
 /mob/living/carbon/monkey/angry/Initialize()
 	. = ..()
 	if(prob(10))
