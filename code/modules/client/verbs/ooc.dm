@@ -347,3 +347,9 @@ GLOBAL_VAR_INIT(normal_ooc_colour, OOC_COLOR)
 
 		pct += delta
 		winset(src, "mainwindow.split", "splitter=[pct]")
+		
+/client/verb/disable_goonchat()
+	set name = "Disable goonchat"
+	set category = "OOC"
+	winset(src, "output", "is-visible=true;is-disabled=false")
+	winset(src, "browseroutput", "is-visible=false")
