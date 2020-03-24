@@ -182,3 +182,7 @@
 	icon_state = "vat"
 	anchored = TRUE
 	reagent_id = "cooking_oil"
+/obj/structure/reagent_dispensers/cooking_oil/nutriment
+	name = "vat of plant nutriment"
+	desc = "A huge metal vat filled with the stuff that makes plants grow."
+	reagent_id = "eznutriment"

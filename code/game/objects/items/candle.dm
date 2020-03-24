@@ -79,4 +79,7 @@
 	infinite = TRUE
 	start_lit = TRUE
 
+/obj/item/candle/prelit
+	start_lit = TRUE
+
 #undef CANDLE_LUMINOSITY

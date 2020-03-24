@@ -34,6 +34,7 @@
 	icon = 'ppstation/icons/manhole.dmi'
 	icon_state = "manhole_closed"
 	anchored = TRUE
+	plane = FLOOR_PLANE //removes the unwanted ambient occlusion
 	layer = 2
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	var/code
