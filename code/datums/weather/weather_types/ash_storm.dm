@@ -17,8 +17,9 @@
 	end_overlay = "light_ash"
 
 	area_type = /area/lavaland/surface/outdoors
-	target_trait = ZTRAIT_MINING
-
+	//target_trait = ZTRAIT_MINING
+	//not interested!
+	target_trait = "poo poo pee pee"
 	immunity_type = "ash"
 
 	probability = 90

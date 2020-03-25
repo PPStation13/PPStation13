@@ -3,7 +3,7 @@
 #define FORCE_MAP "_maps/ppstation.json"
 
 #include "map_files\generic\CentCom.dmm"
-#include "map_files\Mining\Lavaland.dmm"
+//#include "map_files\Mining\Lavaland.dmm"
 
 #ifndef LOWMEMORYMODE
 	#ifdef ALL_MAPS
