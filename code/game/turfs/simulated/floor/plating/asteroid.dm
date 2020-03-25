@@ -347,3 +347,18 @@
 /turf/open/floor/plating/asteroid/snow/atmosphere
 	initial_gas_mix = FROZEN_ATMOS
 	planetary_atmos = FALSE
+
+/turf/open/floor/plating/asteroid/path
+	name = "gravel path"
+	desc = "A simple path made using flat rocks and gravel."
+	icon = 'ppstation/icons/turf.dmi'
+	icon_state = "path0"
+	icon_plating = "path0"
+
+/turf/open/floor/plating/asteroid/path/Initialize()
+	. = ..()
+	icon_state = "path[rand(0,3)]"
+/turf/open/floor/plating/asteroid/path/getDug()
+	return
+/turf/open/floor/plating/asteroid/path/can_dig(mob/user)
+	return FALSE

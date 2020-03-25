@@ -469,17 +469,23 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 
 	if(isspaceturf(T)) // Turf never has gravity
 		return 0
-
+	/*
 	var/area/A = get_area(T)
+
 	if(A.has_gravity) // Areas which always has gravity
 		return A.has_gravity
 	else
-		// There's a gravity generator on our z level
+	*/	// There's a gravity generator on our z level
+
+	return STANDARD_GRAVITY
+
+		/* PP here... Fuck gravgens
 		if(GLOB.gravity_generators["[T.z]"])
 			var/max_grav = 0
 			for(var/obj/machinery/gravity_generator/main/G in GLOB.gravity_generators["[T.z]"])
 				max_grav = max(G.setting,max_grav)
 			return max_grav
+		*/
 	return SSmapping.level_trait(T.z, ZTRAIT_GRAVITY)
 
 /area/proc/setup(a_name)

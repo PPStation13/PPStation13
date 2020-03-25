@@ -13,6 +13,9 @@
 	tiled_dirt = FALSE
 
 
+/turf/open/floor/light/alwayson
+	can_modify_colour = FALSE
+
 /turf/open/floor/light/examine(mob/user)
 	..()
 	to_chat(user, "<span class='notice'>There's a <b>small crack</b> on the edge of it.</span>")
