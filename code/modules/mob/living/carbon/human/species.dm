@@ -1022,6 +1022,31 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(H.overeatduration > 1)
 			H.overeatduration -= 2 //doubled the unfat rate
 
+	/* Need to poo and pee
+	*/
+
+	if(H.nutrition > NUTRITION_LEVEL_STARVING)
+		H.need_to_poo++
+		H.need_to_pee++
+
+		if(H.need_to_poo == POO_LEVEL - 60)
+			to_chat(H, "<span class='notice'>You kind of need to poop.</span>")
+		if(H.need_to_pee == PEE_LEVEL - 60)
+			to_chat(H, "<span class='notice'>You kind of need to pee.</span>")
+		if(H.need_to_poo == POO_LEVEL - 10)
+			to_chat(H, "<span class='danger'>You need to poop, now!</span>")
+		if(H.need_to_pee == PEE_LEVEL - 10)
+			to_chat(H, "<span class='danger'>You need to pee, now!</span>")
+		if(prob(20))
+			H.need_to_poo++
+		if(prob(20))
+			H.need_to_pee++
+
+		if(H.need_to_poo > POO_LEVEL)
+			H.emote("poop")
+		if(H.need_to_pee > PEE_LEVEL)
+			H.emote("pee")
+
 	//metabolism change
 	if(H.nutrition > NUTRITION_LEVEL_FAT)
 		H.metabolism_efficiency = 1

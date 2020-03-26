@@ -5,7 +5,7 @@
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_STOMACH
 	attack_verb = list("gored", "squished", "slapped", "digested")
-	desc = "Onaka ga suite imasu."
+	desc = "Organic food storage and processing unit."
 	var/disgust_metabolism = 1
 
 /obj/item/organ/stomach/on_life()

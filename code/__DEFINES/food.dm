@@ -16,3 +16,6 @@
 #define DRINK_GOOD	2
 #define DRINK_VERYGOOD	3
 #define DRINK_FANTASTIC	4
+
+#define POO_LEVEL 900
+#define PEE_LEVEL 600

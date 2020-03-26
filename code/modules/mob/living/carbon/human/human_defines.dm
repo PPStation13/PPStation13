@@ -64,3 +64,7 @@
 	var/lastpuke = 0
 	var/last_fire_update
 	var/account_id
+
+	var/need_to_pee = 0
+	var/need_to_poo = 0
+	var/need_to_egg = 0

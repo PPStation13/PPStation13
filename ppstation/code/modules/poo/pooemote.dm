@@ -1,3 +1,5 @@
+
+
  //made by woross with the help of Tomeno
 
 /datum/emote/living/carbon/human/poop
@@ -20,12 +22,14 @@
 	//	return
 	//BRING BACK UNCONSCIOUS POOPING
 
-	if(user.nutrition < NUTRITION_LEVEL_STARVING)
+	if(user.nutrition < NUTRITION_LEVEL_STARVING && user.need_to_poo < POO_LEVEL - 60)
 		to_chat(user, "<span class='warning'>You're too hungry to poop!</span>")
 		return
 
+	user.need_to_poo = 0
+
 	if((user.w_uniform != null) || (user.wear_suit != null && (user.wear_suit.body_parts_covered & GROIN)))
-		user.nutrition = user.nutrition - 75
+		user.nutrition = max(user.nutrition - 75,30)
 		to_chat(user, "<span class='warning'>You poop yourself!</span>")
 
 		if(!user.shidded) // one layer at a time
@@ -59,27 +63,27 @@
                     //Wow my code a few months ago was utter shit, I should've handled it with variables. Now I'm gonna have to do a trillion ifs, sad
 					if(user.mind.assigned_role == "Clown")
                         //Special clown poop
-						user.nutrition = user.nutrition - 75
+						user.nutrition = max(user.nutrition - 75,30)
 						new/obj/effect/decal/cleanable/poopdecal/clown(linked_sewer.loc)
 						return
 
 					var/obj/item/organ/butt/B = user.getorgan(/obj/item/organ/butt)
 					if(!B)
-						user.nutrition = user.nutrition - 30
+						user.nutrition = max(user.nutrition - 30,30)
 						new/obj/effect/decal/cleanable/poopdecal/liquid(linked_sewer.loc)
 					else
 						if(user.nutrition > 300)
-							user.nutrition = user.nutrition - 75
+							user.nutrition = max(user.nutrition - 75,30)
 							new/obj/effect/decal/cleanable/poopdecal(linked_sewer.loc)
 
 						else
-							user.nutrition = user.nutrition - 50
+							user.nutrition = max(user.nutrition - 50,30)
 							new/obj/effect/decal/cleanable/poopdecal/pellets(linked_sewer.loc)
 				return
 
 		for(var/obj/item/reagent_containers/glass/bucket/N in get_turf(user))
 			if(!(N.reagents.total_volume >= N.reagents.maximum_volume))
-				user.nutrition = user.nutrition - 75
+				user.nutrition = max(user.nutrition - 75,30)
 				N.reagents.add_reagent("poo", 20)
 				to_chat(user, "<span class='notice'>You take a peaceful dump into the bucket.</span>")
 				playsound(user, shiddsound, 30, 1, 5)
@@ -102,7 +106,7 @@
 
 		if(user.mind.assigned_role == "Clown")
 			//Special clown poop
-			user.nutrition = user.nutrition - 75
+			user.nutrition = max(user.nutrition - 75,30)
 			new/obj/effect/decal/cleanable/poopdecal/clown(user.loc)
 
 			//Special clown poo code here
@@ -133,7 +137,7 @@
 							"splashes some bum gravy.",
 							"sprays feces.")
 
-			user.nutrition = user.nutrition - 30
+			user.nutrition = max(user.nutrition - 30,30)
 			new/obj/effect/decal/cleanable/poopdecal/liquid(user.loc)
 
 		else
@@ -158,7 +162,7 @@
 								"voids the bowels.",
 								"drops a log.")
 
-				user.nutrition = user.nutrition - 75
+				user.nutrition = max(user.nutrition - 75,30)
 				new/obj/effect/decal/cleanable/poopdecal(user.loc)
 
 			else
@@ -180,7 +184,7 @@
 								"voids the bowels.",
 								"releases a boulder.")
 
-				user.nutrition = user.nutrition - 50
+				user.nutrition = max(user.nutrition - 50,30)
 				new/obj/effect/decal/cleanable/poopdecal/pellets(user.loc)
 
 
@@ -204,7 +208,7 @@
 		t_himself = "herself"
 
 	//if(user.canpee == FALSE)
-	if(user.lastpee > world.time - 1000)
+	if(user.lastpee > world.time - 1000 && user.need_to_pee < PEE_LEVEL - 60)
 		to_chat(user, "<span class='warning'>You don't want to!</span>")
 		return
 
@@ -213,6 +217,7 @@
 	else
 		//user.canpee = FALSE
 		user.lastpee = world.time
+		user.need_to_pee = 0
 
 		for(var/obj/structure/toilet/M in get_turf(user))
 			if(M.open == TRUE)
