@@ -3395,6 +3395,7 @@
 #include "ppstation\code\modules\breeding\ovaries.dm"
 #include "ppstation\code\modules\chess\realchess.dm"
 #include "ppstation\code\modules\clothes\hats.dm"
+#include "ppstation\code\modules\construction\board_up.dm"
 #include "ppstation\code\modules\jobs\hobo.dm"
 #include "ppstation\code\modules\judaism\foreskin.dm"
 #include "ppstation\code\modules\judaism\rabbi.dm"

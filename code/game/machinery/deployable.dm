@@ -56,6 +56,16 @@
 
 /////BARRICADE TYPES///////
 
+/obj/structure/barricade/crude
+	name = "crude plank barricade"
+	desc = "This space is blocked off by a crude assortment of planks."
+	icon = 'icons/obj/structures.dmi'
+	icon_state = "woodenbarricade-old"
+	material = WOOD
+	layer = 3.3
+	max_integrity = 50
+	proj_pass_rate = 65
+
 /obj/structure/barricade/wooden
 	name = "wooden barricade"
 	desc = "This space is blocked off by a wooden barricade."

@@ -163,7 +163,8 @@
 		return 1 //skip the afterattack
 
 	add_fingerprint(user)
-
+	if(fulltile && board_up(user,I))
+		return
 	if(I.tool_behaviour == TOOL_WELDER && user.a_intent == INTENT_HELP)
 		if(obj_integrity < max_integrity)
 			if(!I.tool_start_check(user, amount=0))

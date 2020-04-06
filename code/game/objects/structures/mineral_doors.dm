@@ -121,6 +121,8 @@
 /obj/structure/mineral_door/attackby(obj/item/I, mob/user)
 	if(pickaxe_door(user, I))
 		return
+	if(board_up(user, I))
+		return
 	else if(user.a_intent != INTENT_HARM)
 		return attack_hand(user)
 	else

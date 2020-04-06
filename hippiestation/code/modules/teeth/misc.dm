@@ -47,7 +47,7 @@
 		amt += teeth.amount
 	return amt
 
-/proc/punchouttooth(var/mob/living/carbon/human/target, var/mob/living/carbon/human/user, var/strength, var/obj/Q)
+/proc/punchouttooth(var/mob/living/carbon/human/target, var/mob/living/carbon/human/user, var/obj/Q, var/strength)
 	if(istype(Q, /obj/item/bodypart/head) && prob(strength * (user.zone_selected == "mouth" ? 3 : 1))) //MUCH higher chance to knock out teeth if you aim for mouth
 		var/obj/item/bodypart/head/U = Q
 		if(U.knock_out_teeth(get_dir(user, target), round(rand(28, 38) * ((strength*2)/100))))

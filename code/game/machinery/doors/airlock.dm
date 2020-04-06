@@ -806,7 +806,8 @@
 			if(shock(user, 75))
 				return
 	add_fingerprint(user)
-
+	if(board_up(user,C))
+		return
 	if(panel_open)
 		switch(security_level)
 			if(AIRLOCK_SECURITY_NONE)

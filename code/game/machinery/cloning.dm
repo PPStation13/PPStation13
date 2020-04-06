@@ -68,11 +68,12 @@
 		efficiency += S.rating
 	for(var/obj/item/stock_parts/manipulator/P in component_parts)
 		speed_coeff += P.rating
-	heal_level = (efficiency * 15) + 10
-	if(heal_level < MINIMUM_HEAL_LEVEL)
+	//heal_level = (efficiency * 15) + 10
+	heal_level = 100
+	/*if(heal_level < MINIMUM_HEAL_LEVEL)
 		heal_level = MINIMUM_HEAL_LEVEL
 	if(heal_level > 100)
-		heal_level = 100
+		heal_level = 100*/
 
 /obj/machinery/clonepod/examine(mob/user)
 	..()
