@@ -57,6 +57,7 @@ SUBSYSTEM_DEF(atoms)
 		late_loaders.Cut()
 
 /datum/controller/subsystem/atoms/proc/InitAtom(atom/A, list/arguments)
+	text2file("Initializing [A].", "fuckfuck.txt")
 	var/the_type = A.type
 	if(QDELING(A))
 		BadInitializeCalls[the_type] |= BAD_INIT_QDEL_BEFORE
@@ -79,6 +80,7 @@ SUBSYSTEM_DEF(atoms)
 				else
 					A.LateInitialize()
 			if(INITIALIZE_HINT_QDEL)
+				text2file("Deleting [A].", "fuckfuck.txt")
 				qdel(A)
 				qdeleted = TRUE
 			else
@@ -89,7 +91,9 @@ SUBSYSTEM_DEF(atoms)
 	else if(!(A.flags_1 & INITIALIZED_1))
 		BadInitializeCalls[the_type] |= BAD_INIT_DIDNT_INIT
 
+	text2file("Initialized [A].", "fuckfuck.txt")
 	return qdeleted || QDELING(A)
+
 
 /datum/controller/subsystem/atoms/proc/map_loader_begin()
 	old_initialized = initialized
