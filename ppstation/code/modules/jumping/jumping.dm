@@ -19,6 +19,11 @@
 			pixel_y = pixel_y+3
 			sleep(0.1)
 		spawn() jump_end()
+		spawn(3)
+			jumping = FALSE
+			pixel_y = 0
+		spawn(5)
+			jumping = FALSE
 		if(A.loc == loc) //check if we arrived at our destination
 			return 1
 		else
