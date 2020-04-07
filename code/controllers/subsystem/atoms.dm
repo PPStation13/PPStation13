@@ -3,6 +3,8 @@
 #define BAD_INIT_SLEPT 4
 #define BAD_INIT_NO_HINT 8
 
+//#define TERRIBLE_FUCKING_DEBUG
+
 SUBSYSTEM_DEF(atoms)
 	name = "Atoms"
 	init_order = INIT_ORDER_ATOMS
@@ -57,7 +59,9 @@ SUBSYSTEM_DEF(atoms)
 		late_loaders.Cut()
 
 /datum/controller/subsystem/atoms/proc/InitAtom(atom/A, list/arguments)
+#ifdef TERRIBLE_FUCKING_DEBUG
 	text2file("Initializing [A].", "fuckfuck.txt")
+#endif
 	var/the_type = A.type
 	if(QDELING(A))
 		BadInitializeCalls[the_type] |= BAD_INIT_QDEL_BEFORE
@@ -80,7 +84,9 @@ SUBSYSTEM_DEF(atoms)
 				else
 					A.LateInitialize()
 			if(INITIALIZE_HINT_QDEL)
+#ifdef TERRIBLE_FUCKING_DEBUG
 				text2file("Deleting [A].", "fuckfuck.txt")
+#endif
 				qdel(A)
 				qdeleted = TRUE
 			else
@@ -90,10 +96,11 @@ SUBSYSTEM_DEF(atoms)
 		qdeleted = TRUE
 	else if(!(A.flags_1 & INITIALIZED_1))
 		BadInitializeCalls[the_type] |= BAD_INIT_DIDNT_INIT
-
+#ifdef TERRIBLE_FUCKING_DEBUG
 	text2file("Initialized [A].", "fuckfuck.txt")
+#undef TERRIBLE_FUCKING_DEBUG
+#endif
 	return qdeleted || QDELING(A)
-
 
 /datum/controller/subsystem/atoms/proc/map_loader_begin()
 	old_initialized = initialized
