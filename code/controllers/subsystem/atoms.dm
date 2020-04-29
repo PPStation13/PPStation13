@@ -60,7 +60,7 @@ SUBSYSTEM_DEF(atoms)
 
 /datum/controller/subsystem/atoms/proc/InitAtom(atom/A, list/arguments)
 #ifdef TERRIBLE_FUCKING_DEBUG
-	text2file("Initializing [A].", "fuckfuck.txt")
+	text2file("Initializing [A.type].", "fuckfuck.txt")
 #endif
 	var/the_type = A.type
 	if(QDELING(A))
@@ -85,7 +85,7 @@ SUBSYSTEM_DEF(atoms)
 					A.LateInitialize()
 			if(INITIALIZE_HINT_QDEL)
 #ifdef TERRIBLE_FUCKING_DEBUG
-				text2file("Deleting [A].", "fuckfuck.txt")
+				text2file("Deleting [A.type].", "fuckfuck.txt")
 #endif
 				qdel(A)
 				qdeleted = TRUE
@@ -97,7 +97,7 @@ SUBSYSTEM_DEF(atoms)
 	else if(!(A.flags_1 & INITIALIZED_1))
 		BadInitializeCalls[the_type] |= BAD_INIT_DIDNT_INIT
 #ifdef TERRIBLE_FUCKING_DEBUG
-	text2file("Initialized [A].", "fuckfuck.txt")
+	text2file("Initialized [A.type].", "fuckfuck.txt")
 #undef TERRIBLE_FUCKING_DEBUG
 #endif
 	return qdeleted || QDELING(A)
