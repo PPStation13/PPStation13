@@ -1030,17 +1030,13 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		H.need_to_pee++
 
 		if(H.need_to_poo == POO_LEVEL - 60)
-			to_chat(H, "<span class='notice'>You kind of need to poop.</span>")
+			to_chat(H, "<span class='notice'><b>You kind of need to poop.</b></span>")
 		if(H.need_to_pee == PEE_LEVEL - 60)
-			to_chat(H, "<span class='notice'>You kind of need to pee.</span>")
+			to_chat(H, "<span class='notice'><b>You kind of need to pee.</b></span>")
 		if(H.need_to_poo == POO_LEVEL - 10)
-			to_chat(H, "<span class='danger'>You need to poop, now!</span>")
+			to_chat(H, "<span class='danger'><b>You need to poop, now!</b></span>")
 		if(H.need_to_pee == PEE_LEVEL - 10)
-			to_chat(H, "<span class='danger'>You need to pee, now!</span>")
-		if(prob(20))
-			H.need_to_poo++
-		if(prob(20))
-			H.need_to_pee++
+			to_chat(H, "<span class='danger'><b>You need to pee, now!</b></span>")
 
 		if(H.need_to_poo > POO_LEVEL)
 			H.emote("poop")

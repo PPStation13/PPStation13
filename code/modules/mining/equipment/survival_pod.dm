@@ -17,7 +17,7 @@
 	var/template_id = "shelter_alpha"
 	var/datum/map_template/shelter/template
 	var/used = FALSE
-	var/can_use_on_station = FALSE //hippie -- to prevent station capsule grief
+	var/can_use_on_station = TRUE //hippie -- to prevent station capsule grief
 
 /obj/item/survivalcapsule/proc/get_template()
 	if(template)
@@ -38,9 +38,9 @@
 	to_chat(user, template.description)
 
 //hippie start -- to prevent station capsule grief
-/obj/item/survivalcapsule/emag_act(mob/user)
-	can_use_on_station = TRUE
-	playsound(src.loc, "sparks", 100, 1)
+///obj/item/survivalcapsule/emag_act(mob/user)
+//	can_use_on_station = TRUE
+//	playsound(src.loc, "sparks", 100, 1)
 //hippie end - to prevent station capsule grief
 
 /obj/item/survivalcapsule/attack_self()
