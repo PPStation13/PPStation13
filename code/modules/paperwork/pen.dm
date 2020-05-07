@@ -65,6 +65,11 @@
 	to_chat(user, "<span class='notice'>\The [src] will now write in [colour].</span>")
 	desc = "It's a fancy four-color ink pen, set to [colour]."
 
+/obj/item/pen/monospace
+	name = "monospace pen"
+	desc = "With the invention of the space pen, it was inevitable that a monospace pen would be invented too."
+	font = "Courier New"
+
 /obj/item/pen/fountain
 	name = "fountain pen"
 	desc = "It's a common fountain pen, with a faux wood body."

@@ -1,7 +1,10 @@
 {
-    "map_name": "Hippie Station",
+    "map_name": "PP Station",
     "map_path": "map_files/HippieStation",
     "map_file": "hippiestation.dmm",
+	"space_ruin_levels": 1,
+	"space_empty_levels": 1,
+	"allow_custom_shuttles": false,
     "shuttles": {
         "emergency": "emergency_box",
         "ferry": "ferry_fancy",
