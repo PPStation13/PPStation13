@@ -8,7 +8,7 @@
 
 /obj/item/projectile/bullet/a762
 	name = "7.62 bullet"
-	damage = 45
+	damage = 50
 	armour_penetration = 40
 
 /obj/item/projectile/bullet/a762_enchanted
