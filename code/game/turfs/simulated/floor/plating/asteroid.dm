@@ -75,6 +75,13 @@
 		else if(istype(W, /obj/item/storage/bag/ore))
 			for(var/obj/item/stack/ore/O in src)
 				SEND_SIGNAL(W, COMSIG_PARENT_ATTACKBY, O)
+		else if(istype(W, /obj/item/gun/ballistic/grinder_gun))
+			var/obj/item/gun/ballistic/grinder_gun/G = W
+			if(length(icon_state) == 9 || length(icon_state) == 10) //sprite has rocks
+				if(G.rocks_loaded == FALSE)
+					G.rocks_loaded = TRUE
+					to_chat(user, "<span class='notice'>You fill up the gun with some rocks.</span>")
+
 
 /turf/open/floor/plating/asteroid/ex_act(severity, target)
 	. = SEND_SIGNAL(src, COMSIG_ATOM_EX_ACT, severity, target)
