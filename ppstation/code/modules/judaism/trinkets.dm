@@ -8,7 +8,7 @@ Made with love by woross
 /obj/item/dreidel
 	name = "dreidel"
 	desc = "A fun wooden toy."
-	icon = 'ppstation/icons/dreidel.dmi'
+	icon = 'ppstation/icons/jew/dreidel.dmi'
 	icon_state = "shin"
 	w_class = WEIGHT_CLASS_TINY
 	var/states = list("shin","he","gimel","nun")
@@ -29,7 +29,7 @@ Made with love by woross
 /obj/item/candle/infinite/menorah
 	name = "menorah"
 	desc = "Oy vey!"
-	icon = 'ppstation/icons/jew.dmi'
+	icon = 'ppstation/icons/jew/jew.dmi'
 	icon_state = "menorah"
 	item_state = null
 

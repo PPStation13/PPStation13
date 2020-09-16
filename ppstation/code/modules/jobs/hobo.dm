@@ -9,8 +9,8 @@
 
 
 /obj/item/clothing/under/hobo
-	alternate_worn_icon = 'ppstation/icons/HoboClothes.dmi'
-	icon = 'ppstation/icons/HoboClothes.dmi'
+	alternate_worn_icon = 'ppstation/icons/hobo/HoboClothes.dmi'
+	icon = 'ppstation/icons/hobo/HoboClothes.dmi'
 	name = "rags"
 	desc = "Disgusting hobo rags."
 	icon_state = "Hobo1"
@@ -23,7 +23,7 @@
 
 /obj/effect/landmark/start/hobo
 	name = "Hobo"
-	icon = 'ppstation/icons/HoboClothes.dmi'
+	icon = 'ppstation/icons/hobo/HoboClothes.dmi'
 	icon_state = "hobospawn"
 
 
@@ -56,6 +56,8 @@
 
 /datum/job/hobo/after_spawn(mob/living/carbon/human/H, mob/M)
 
+	H.faction.Add("hobo")
+
 	var/suit=null
 	var/back=null
 	var/belt=null
@@ -86,7 +88,7 @@
 					"/obj/item/clothing/head/pp/horn_helmet",
 					"/obj/item/clothing/head/pp/oldbeanie",
 					"/obj/item/clothing/head/fedora",
-					"/obj/item/clothing/head/pp/edwin," //Awes!
+					"/obj/item/clothing/head/pp/edwin", //Awes!
 					"/obj/item/clothing/head/flatcap",
 					"/obj/item/clothing/head/bandana",
 					"/obj/item/clothing/head/cone",
@@ -95,6 +97,7 @@
 	if(prob(10))
 		belt = pick("/obj/item/grenade/smokebomb",
 					"/obj/item/gun/ballistic/poopistol",
+					"/obj/item/gun/ballistic/grinder_gun",
 					"/obj/item/grenade/chem_grenade/cleaner",
 					"/obj/item/grenade/chem_grenade/glitter/pink",
 					"/obj/item/storage/belt/utility",

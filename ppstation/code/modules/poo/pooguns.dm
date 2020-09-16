@@ -9,12 +9,12 @@
 /obj/item/gun/ballistic/poopistol
 	name = "poo pistol"
 	desc = "A common flintlock pistol, capable of shooting poo. Called the \"Rump Raider\" by bandits, it is very popular with space outlaws for its low cost."
-	icon = 'ppstation/icons/Rump_Raider.dmi'
+	icon = 'ppstation/icons/poo/Rump_Raider.dmi'
 	icon_state = "rump_raider"
 	item_state = "rump_raider"
 
-	lefthand_file = 'ppstation/icons/poohand_left.dmi'
-	righthand_file = 'ppstation/icons/poohand_right.dmi'
+	lefthand_file = 'ppstation/icons/poo/poohand_left.dmi'
+	righthand_file = 'ppstation/icons/poo/poohand_right.dmi'
 
 	w_class = WEIGHT_CLASS_SMALL
 	force = 10
@@ -96,7 +96,7 @@
 
 /obj/item/projectile/poo
 	name = "poo"
-	icon = 'ppstation/icons/Rump_Raider.dmi'
+	icon = 'ppstation/icons/poo/Rump_Raider.dmi'
 	icon_state = "poojectile"
 	suppressed = FALSE
 	damage = 20
@@ -114,7 +114,7 @@
 	if (istype(target, /mob))
 		if (ishuman(target))
 			var/mob/living/carbon/human/H = target
-			var/mutable_appearance/shiddoverlay = mutable_appearance('ppstation/icons/poo.dmi')
+			var/mutable_appearance/shiddoverlay = mutable_appearance('ppstation/icons/poo/poo.dmi')
 			shiddoverlay.icon_state = "Shitoverlay"
 			H.Paralyze(10)
 			H.adjust_blurriness(5)
@@ -130,11 +130,11 @@
 /obj/item/gun/ballistic/poocannon
 	name = "poo cannon"
 	desc = "A heavy handheld cannon, capable of shooting poo. Called the \"Butt Blaster\" by bandits, it is very popular with space outlaws for its sheer destructive force."
-	icon = 'ppstation/icons/butt_blaster.dmi'
+	icon = 'ppstation/icons/poo/butt_blaster.dmi'
 	icon_state = "butt_blaster_empty"
 	item_state = "butt_blaster"
-	lefthand_file = 'ppstation/icons/poohand_left.dmi'
-	righthand_file = 'ppstation/icons/poohand_right.dmi'
+	lefthand_file = 'ppstation/icons/poo/poohand_left.dmi'
+	righthand_file = 'ppstation/icons/poo/poohand_right.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	force = 15
 	recoil = 1
@@ -190,7 +190,7 @@
 	projectile_type = /obj/item/projectile/poo/cannon
 
 /obj/item/projectile/poo/cannon
-	icon = 'ppstation/icons/butt_blaster.dmi'
+	icon = 'ppstation/icons/poo/butt_blaster.dmi'
 	icon_state = "poojectile_cannon"
 	damage = 42
 	range = 8

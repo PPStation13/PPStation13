@@ -5,7 +5,7 @@
 /obj/effect/decal/cleanable/poopdecal
 	name = "poo"
 	desc = "A mighty log."
-	icon = 'ppstation/icons/poo.dmi'
+	icon = 'ppstation/icons/poo/poo.dmi'
 	icon_state = "Logs"
 	//layer = 2.09 //Sorry LIBERALS
 	layer = 2.65 //Sorry LIBERALS
@@ -44,7 +44,7 @@
 /obj/effect/decal/cleanable/poopdecal/proc/on_slip(mob/living/carbon/C)
 	//c&p from poo.dm
 	new/obj/effect/decal/cleanable/poopsplash(src.loc)
-	var/mutable_appearance/shiddoverlay = mutable_appearance('ppstation/icons/poo.dmi')
+	var/mutable_appearance/shiddoverlay = mutable_appearance('ppstation/icons/poo/poo.dmi')
 	shiddoverlay.icon_state = "Shitoverlay"
 	playsound(C, "desceration", 50, TRUE)
 	if(ishuman(C))
@@ -83,7 +83,7 @@
 
 	name = "poo"
 	desc = "A splash of poo."
-	icon = 'ppstation/icons/poo.dmi'
+	icon = 'ppstation/icons/poo/poo.dmi'
 	icon_state = "Splatter"
 
 /obj/effect/decal/cleanable/poopsplash/Initialize()
@@ -102,7 +102,7 @@
 
 	name = "poo"
 	desc = "Some remains of poo."
-	icon = 'ppstation/icons/poo.dmi'
+	icon = 'ppstation/icons/poo/poo.dmi'
 	icon_state = "Splatter2"
 
 /obj/effect/decal/cleanable/poopdirt/Initialize()
@@ -140,7 +140,7 @@
 
 	name = "pee"
 	desc = "A puddle of pee."
-	icon = 'ppstation/icons/poo.dmi'
+	icon = 'ppstation/icons/poo/poo.dmi'
 	icon_state = "Piss"
 
 	turf_loc_check = FALSE

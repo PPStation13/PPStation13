@@ -57,7 +57,7 @@
 	var/datum/component/material_container/mat_container = materials.mat_container
 	if (!mat_container)
 		return
-		
+
 	if(O.refined_type == null)
 		return
 
@@ -164,8 +164,8 @@
 		send_console_message()
 
 /obj/machinery/mineral/ore_redemption/attackby(obj/item/W, mob/user, params)
-	if(default_unfasten_wrench(user, W))
-		return
+	//if(default_unfasten_wrench(user, W))
+	//	return
 	if(default_deconstruction_screwdriver(user, "ore_redemption-open", "ore_redemption", W))
 		updateUsrDialog()
 		return
@@ -187,13 +187,13 @@
 		if(user.transferItemToLoc(W, src))
 			inserted_disk = W
 			return TRUE
-			
+
 	var/obj/item/stack/ore/O = W
 	if(istype(O))
 		if(O.refined_type == null)
 			to_chat(user, "<span class='notice'>[O] has already been refined!</span>")
 			return
-		
+
 	return ..()
 
 /obj/machinery/mineral/ore_redemption/multitool_act(mob/living/user, obj/item/multitool/I)

@@ -2,7 +2,7 @@
 
 	name = "hobo barrel"
 	desc = "A crude yet cozy hobo barrel used as a bonfire."
-	icon = 'ppstation/icons/Barrels.dmi'
+	icon = 'ppstation/icons/hobo/Barrels.dmi'
 	icon_state = "barrel"
 	light_color = LIGHT_COLOR_FIRE
 	density = TRUE

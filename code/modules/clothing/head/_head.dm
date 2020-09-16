@@ -7,6 +7,7 @@
 	slot_flags = ITEM_SLOT_HEAD
 	var/blockTracking = 0 //For AI tracking
 	var/can_toggle = null
+	var/unusual_effect = null
 	dynamic_hair_suffix = "+generic"
 
 /obj/item/clothing/head/Initialize()
@@ -22,6 +23,10 @@
 			. += mutable_appearance('icons/effects/item_damage.dmi', "damagedhelmet")
 		IF_HAS_BLOOD_DNA(src)
 			. += mutable_appearance('icons/effects/blood.dmi', "helmetblood")
+		if(unusual_effect)
+			var/mutable_appearance/moved_effect = mutable_appearance('ppstation/icons/unusual_effects.dmi', unusual_effect)
+			moved_effect.pixel_y  += 16
+			. += moved_effect
 
 /obj/item/clothing/head/update_clothes_damaged_state(damaging = TRUE)
 	..()

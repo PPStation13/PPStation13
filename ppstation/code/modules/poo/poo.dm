@@ -1,14 +1,14 @@
 /obj/item/reagent_containers/food/snacks/poo
 	name = "poo log"
 	desc = "A humongous length of fecal cable."
-	icon = 'ppstation/icons/poo.dmi'
+	icon = 'ppstation/icons/poo/poo.dmi'
 	bitesize = 5
 	list_reagents = list("nutriment" = 5, "poo" = 10)
 	tastes = list("crap" = 4)
 	icon_state = "LogInhand"
 	throwforce = 5 //:pepegrim:
-	lefthand_file = 'ppstation/icons/poohand_left.dmi'
-	righthand_file = 'ppstation/icons/poohand_right.dmi'
+	lefthand_file = 'ppstation/icons/poo/poohand_left.dmi'
+	righthand_file = 'ppstation/icons/poo/poohand_right.dmi'
 
 	var/poostun = TRUE
 	var/poostunlength = 20
@@ -58,7 +58,7 @@
 
 	if(ishuman(hit_atom))
 		var/mob/living/carbon/human/H = hit_atom
-		var/mutable_appearance/shiddoverlay = mutable_appearance('ppstation/icons/poo.dmi')
+		var/mutable_appearance/shiddoverlay = mutable_appearance('ppstation/icons/poo/poo.dmi')
 		shiddoverlay.icon_state = "Shitoverlay"
 		if(poostun)
 			H.Paralyze(poostunlength)

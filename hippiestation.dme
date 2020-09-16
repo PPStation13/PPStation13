@@ -3410,4 +3410,9 @@
 #include "ppstation\code\modules\poo\pooemote.dm"
 #include "ppstation\code\modules\poo\pooguns.dm"
 #include "ppstation\code\modules\turf\sewers.dm"
+#include "ppstation\code\modules\unusual\bank.dm"
+#include "ppstation\code\modules\unusual\crate.dm"
+#include "ppstation\code\modules\unusual\generate.dm"
+#include "ppstation\code\modules\unusual\lists.dm"
+#include "ppstation\code\modules\unusual\savefile.dm"
 // END_INCLUDE

@@ -11,7 +11,7 @@
 
 /datum/emote/living/carbon/human/poop/run_emote(mob/living/carbon/human/user, params)
 
-	var/mutable_appearance/shiddoverlay = mutable_appearance('ppstation/icons/poo.dmi')
+	var/mutable_appearance/shiddoverlay = mutable_appearance('ppstation/icons/poo/poo.dmi')
 	shiddoverlay.icon_state = "Shitoverlay"
 
 	message = "poops."
@@ -277,7 +277,7 @@
 
 /datum/emote/living/carbon/monkey/poop/run_emote(mob/living/carbon/monkey/user, params)
 
-	var/mutable_appearance/shiddoverlay = mutable_appearance('ppstation/icons/poo.dmi')
+	var/mutable_appearance/shiddoverlay = mutable_appearance('ppstation/icons/poo/poo.dmi')
 	shiddoverlay.icon_state = "Shitoverlay"
 
 	message = "poops."

@@ -4,7 +4,7 @@
 			if("F")
 				emote("fart")
 				return
-			if("S")
+			if("R")
 				emote("scream")
 				return
 	return ..()

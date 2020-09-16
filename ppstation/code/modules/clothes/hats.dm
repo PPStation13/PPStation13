@@ -1,6 +1,6 @@
 /obj/item/clothing/head/pp
-	alternate_worn_icon = 'ppstation/icons/head_worn.dmi'
-	icon = 'ppstation/icons/head_item.dmi'
+	alternate_worn_icon = 'ppstation/icons/clothes/head_worn.dmi'
+	icon = 'ppstation/icons/clothes/head_item.dmi'
 
 /obj/item/clothing/head/pp/edwin
 	name = "Edwin hat"

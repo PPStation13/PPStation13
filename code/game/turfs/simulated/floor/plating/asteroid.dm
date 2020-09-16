@@ -358,7 +358,7 @@
 /turf/open/floor/plating/asteroid/path
 	name = "gravel path"
 	desc = "A simple path made using flat rocks and gravel."
-	icon = 'ppstation/icons/turf.dmi'
+	icon = 'ppstation/icons/turf/turf.dmi'
 	icon_state = "path0"
 	icon_plating = "path0"
 

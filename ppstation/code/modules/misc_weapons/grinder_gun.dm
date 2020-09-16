@@ -1,7 +1,7 @@
 /obj/item/gun/ballistic/grinder_gun
 	name = "grinder gun"
 	desc = "A simple gun characterized by its large grinder with a crank that simultaneously grinds rocks and compresses air, allowing the gun to shoot gravel. Laughably weak beyond close range."
-	icon = 'ppstation/icons/ballistic_guns.dmi'
+	icon = 'ppstation/icons/weapons/ballistic_guns.dmi'
 	icon_state = "rock_pistol"
 	//item_state = "rock_pistol" no custom inhand yet, do we even need one?
 	var/grind_sound = 'ppstation/sound/gravel.ogg'
@@ -55,11 +55,11 @@
 	desc = "How did you even get this?"
 	projectile_type = /obj/item/projectile/bullet/pellet/grinder_gun
 	pellets = 12
-	variance = 35
+	variance = 40
 
 /obj/item/projectile/bullet/pellet/grinder_gun
 	name = "pebble"
-	icon = 'ppstation/icons/projectiles.dmi'
+	icon = 'ppstation/icons/weapons/projectiles.dmi'
 	speed = 0.8
 	range = 6
 	damage = 3

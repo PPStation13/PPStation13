@@ -108,6 +108,10 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/list/grind_results //A reagent list containing the reagents this item produces when ground up in a grinder - this can be an empty list to allow for reagent transferring only
 	var/list/juice_results //A reagent list containing blah blah... but when JUICED in a grinder!
 
+	//PP edit
+	//Can be stored in vaults?
+	var/vaultable = FALSE
+
 /obj/item/Initialize()
 
 	materials =	typelist("materials", materials)
@@ -373,13 +377,13 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		qdel(src)
 	item_flags &= ~IN_INVENTORY
 	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED,user)
-	
-	// hippie start -- Custom screams	
-	if (iscarbon(user))	
-		var/mob/living/carbon/C = user	
-		if (C)	
-			C.reindex_screams()	
-	// hippie end	
+
+	// hippie start -- Custom screams
+	if (iscarbon(user))
+		var/mob/living/carbon/C = user
+		if (C)
+			C.reindex_screams()
+	// hippie end
 
 
 // called just as an item is picked up (loc is not yet changed)
@@ -403,12 +407,12 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(item_action_slot_check(slot, user)) //some items only give their actions buttons when in a specific slot.
 			A.Grant(user)
 	item_flags |= IN_INVENTORY
-	
-	// hippie start -- Custom screams	
-	if (iscarbon(user))	
-		var/mob/living/carbon/C = user	
-		if (C)	
-			C.reindex_screams()	
+
+	// hippie start -- Custom screams
+	if (iscarbon(user))
+		var/mob/living/carbon/C = user
+		if (C)
+			C.reindex_screams()
 	// hippie end
 
 

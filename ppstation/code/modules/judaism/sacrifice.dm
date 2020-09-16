@@ -10,13 +10,13 @@ Made with love by woross
 /obj/structure/jewaltar
 	name = "altar"
 	desc = "An altar, presumably to the Moloch."
-	icon = 'ppstation/icons/jew.dmi'
+	icon = 'ppstation/icons/jew/jew.dmi'
 	icon_state = "jewaltar"
 	density = TRUE
 	anchored = TRUE
 	layer = TABLE_LAYER
 	climbable = FALSE
-	pass_flags = LETPASSTHROW //You can throw objects over this, despite it's density.")
+	pass_flags = LETPASSTHROW //You can throw objects over this, despite its density.")
 	max_integrity = 10000
 	integrity_failure = 30
 	var/foreskincount = 0

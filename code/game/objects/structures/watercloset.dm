@@ -118,7 +118,7 @@
 		sleep(5)
         //Cover the dude in poo like nothing matters
 		if(!user.shidded) // one layer at a time
-			var/mutable_appearance/shiddoverlay = mutable_appearance('ppstation/icons/poo.dmi')
+			var/mutable_appearance/shiddoverlay = mutable_appearance('ppstation/icons/poo/poo.dmi')
 			shiddoverlay.icon_state = "Shitoverlay"
 			user.add_overlay(shiddoverlay)
 			user.shidded = TRUE

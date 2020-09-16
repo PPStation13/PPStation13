@@ -674,7 +674,7 @@
 
 	//PP Station: also cleans poo for convenience's sake
 	if(shidded)
-		cut_overlay(mutable_appearance('ppstation/icons/poo.dmi', "Shitoverlay"))
+		cut_overlay(mutable_appearance('ppstation/icons/poo/poo.dmi', "Shitoverlay"))
 		shidded = FALSE
 
 //Turns a mob black, flashes a skeleton overlay

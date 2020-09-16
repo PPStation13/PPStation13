@@ -27,8 +27,8 @@ CONTENTS:
 /obj/item/clothing/neck/necklace/dope/rabbi
 	name = "star of David necklace"
 	desc = "Feels good to be rich."
-	icon = 'ppstation/icons/jew.dmi'
-	alternate_worn_icon = 'ppstation/icons/jew.dmi'
+	icon = 'ppstation/icons/jew/jew.dmi'
+	alternate_worn_icon = 'ppstation/icons/jew/jew.dmi'
 	icon_state = "jew_bling_worn"
 	item_state = ""
 	item_color = "jew_bling_icon"
@@ -49,7 +49,7 @@ CONTENTS:
 
 /obj/effect/landmark/start/rabbi
 	name = "Rabbi"
-	icon = 'ppstation/icons/jew.dmi'
+	icon = 'ppstation/icons/jew/jew.dmi'
 	icon_state = "jewspawn"
 
 /datum/job/rabbi
