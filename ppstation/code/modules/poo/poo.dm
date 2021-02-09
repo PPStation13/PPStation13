@@ -2,6 +2,7 @@
 	name = "poo log"
 	desc = "A humongous length of fecal cable."
 	icon = 'ppstation/icons/poo/poo.dmi'
+	vaultable = TRUE
 	bitesize = 5
 	list_reagents = list("nutriment" = 5, "poo" = 10)
 	tastes = list("crap" = 4)

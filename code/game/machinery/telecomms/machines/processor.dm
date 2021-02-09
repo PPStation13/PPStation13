@@ -55,3 +55,13 @@
 
 /obj/machinery/telecomms/processor/preset_one/birdstation
 	name = "Processor"
+
+/obj/machinery/telecomms/processor/ppbox
+	name = "PP Box"
+	desc = "Extremely stable."
+
+/obj/machinery/telecomms/processor/ppbox/Destroy()
+	spawn(10)
+		SSticker.Reboot("PP Box destroyed.","",300)
+	set_security_level(SEC_LEVEL_DELTA)
+	return ..()
