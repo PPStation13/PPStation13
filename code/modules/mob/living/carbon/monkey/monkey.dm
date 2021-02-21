@@ -174,9 +174,9 @@
 	name = "Poopy"
 	desc = "A terrifying monkey that likes to scratch and poop."
 
-/mob/living/carbon/monkey/angry/Initialize()
-	. = ..()
-	if(prob(10))
-		var/obj/item/clothing/head/helmet/justice/escape/helmet = new(src)
-		equip_to_slot_or_del(helmet,SLOT_HEAD)
-		helmet.attack_self(src) // todo encapsulate toggle
+///mob/living/carbon/monkey/angry/Initialize()
+//	. = ..()
+//	if(prob(10))
+//		var/obj/item/clothing/head/helmet/justice/escape/helmet = new(src)
+//		equip_to_slot_or_del(helmet,SLOT_HEAD)
+//		helmet.attack_self(src) // todo encapsulate toggle
