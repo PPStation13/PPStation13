@@ -3,7 +3,7 @@
 #define BAD_INIT_SLEPT 4
 #define BAD_INIT_NO_HINT 8
 
-//#define TERRIBLE_FUCKING_DEBUG
+#define TERRIBLE_FUCKING_DEBUG
 
 SUBSYSTEM_DEF(atoms)
 	name = "Atoms"
