@@ -3397,6 +3397,7 @@
 #include "ppstation\code\modules\clothes\hats.dm"
 #include "ppstation\code\modules\construction\board_up.dm"
 #include "ppstation\code\modules\jobs\hobo.dm"
+#include "ppstation\code\modules\judaism\banker.dm"
 #include "ppstation\code\modules\judaism\foreskin.dm"
 #include "ppstation\code\modules\judaism\rabbi.dm"
 #include "ppstation\code\modules\judaism\sacrifice.dm"

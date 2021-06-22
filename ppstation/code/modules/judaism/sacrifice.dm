@@ -32,7 +32,7 @@ Made with love by woross
 			return 1
 
 /obj/structure/jewaltar/attack_hand(mob/living/user)
-	if(user.mind.assigned_role == "Rabbi")
+	if(user.mind.assigned_role == "Rabbi" || user.mind.assigned_role == "Banker" )
 		icon_state = "jewaltar_burning"
 		to_chat(user, "<span class='notice'>The altar lights up...</span>")
 		sleep(10)
@@ -46,6 +46,10 @@ Made with love by woross
 		if(foreskincount == 0)
 			to_chat(user, "<span class='notice'>...but nothing happens.</span>")
 		icon_state = "jewaltar"
+
+		for(var/obj/machinery/money_printer/M in GLOB.machines)
+			M.strength += foreskincount
+
 		foreskincount = 0
 	else
 		to_chat(user, "<span class='warning'>The altar burns you, goy!</span>")

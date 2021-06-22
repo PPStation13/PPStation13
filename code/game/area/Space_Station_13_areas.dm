@@ -456,6 +456,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Law Office"
 	icon_state = "law"
 
+/area/bank
+	name = "Bank"
+	icon_state = "bank"
+
 
 //Engineering
 

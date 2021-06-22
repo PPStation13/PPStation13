@@ -43,6 +43,7 @@
 #define ASSISTANT		(1<<13)
 #define HOBO			(1<<14)
 #define RABBI			(1<<15)
+#define BANKER			(1<<16)
 
 
 #define JOB_AVAILABLE 0

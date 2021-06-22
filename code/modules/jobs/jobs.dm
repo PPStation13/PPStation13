@@ -46,7 +46,8 @@ GLOBAL_LIST_INIT(civilian_positions, list(
 	"Mime",
 	"Assistant",
 	"Hobo",
-	"Rabbi",))
+	"Rabbi",
+	"Banker"))
 
 
 GLOBAL_LIST_INIT(security_positions, list(

@@ -97,4 +97,5 @@ Chaplain
 	backpack = /obj/item/storage/backpack/cultpack
 	satchel = /obj/item/storage/backpack/cultpack
 
-/datum/job/rabbi //PP 13 GANG
+/datum/job/rabbi  //PP 13 GANG
+/datum/job/banker //PP 13 GANG
